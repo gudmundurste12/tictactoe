@@ -1,7 +1,6 @@
 var should = require('should');
 
 var tictactoeEventHandler = require('../tictactoeEventHandler');
-var tictactoeState = require('../tictactoeState');
 
 describe("Join game: ", function(){
 	it("A game should not be joinable if the history is empty", function(){
