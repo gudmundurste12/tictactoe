@@ -3,49 +3,8 @@ var should = require('should');
 var tictactoeEventHandler = require('../tictactoeEventHandler');
 var tictactoeState = require('../tictactoeState');
 
-describe("tictactoeState on CreateGame", function(){
-	it("Given an empty history and the GameCreated event, the grid should be empty", function(){
-		//Arrange
-		var history = [];
-		
-		var gridAfter = [
-		["","",""],
-		["","",""],
-		["","",""]
-		];
-
-		//Act
-		var gameState = tictactoeState(history);
-
-		//Assert
-		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
-	});
-
-
-	it("When a game has been created, the grid should be empty", function(){
-		//Arrange
-		var history = [
-		{
-			eventName: "GameCreated",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:29:29"
-		}];
-		
-		var gridAfter = [
-		["","",""],
-		["","",""],
-		["","",""]
-		];
-
-		//Act
-		var gameState = tictactoeState(history);
-
-		//Assert
-		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
-	});
-
-	
-	it("When two players have joined the game, the grid should be empty", function(){
+describe("tictactoeState on MakeMove", function(){
+	it("After the first move, the grid should contain only the one move", function(){
 		//Arrange
 		var history = [
 		{
@@ -57,12 +16,76 @@ describe("tictactoeState on CreateGame", function(){
 			eventName: "GameJoined",
 			userName: "Gvendurst2",
 			timeStamp: "2014-12-02T11:34:29"
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 0
+			}
 		}];
 		
 		var gridAfter = [
-		["","",""],
+		["x","",""],
 		["","",""],
 		["","",""]
+		];
+
+		//Act
+		var gameState = tictactoeState(history);
+
+		//Assert
+		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
+	});
+
+
+	it("Legal moves should be possible", function(){
+		//Arrange
+		var history = [
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:29:29"
+		},
+		{
+			eventName: "GameJoined",
+			userName: "Gvendurst2",
+			timeStamp: "2014-12-02T11:34:29"
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst2",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 2
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 2,
+				y: 1
+			}
+		}];
+		
+		var gridAfter = [
+		["x","",""],
+		["","","o"],
+		["","x",""]
 		];
 
 		//Act
