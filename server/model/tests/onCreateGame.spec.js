@@ -4,7 +4,7 @@ var _ = require('lodash');
 var tictactoeEventHandler = require('../tictactoeEventHandler');
 
 describe("Create game:", function(){
-	it("Given an empty history, handleEvend should only return the GameCreated event", function(){
+	it("Given an empty history, handleEvent should only return the GameCreated event", function(){
 		//Assign
 		var history = [];
 		
@@ -32,21 +32,29 @@ describe("Create game:", function(){
 
 
 describe("Create game:", function(){
-	it("Given an empty history, history should only contain the GameCreated event", function(){
+	it("Given a non-empty history, a BadCommand event should be returned", function(){
 		//Assign
-		var history = [];
-		
-		var when = {
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:29:29"
-		};
-		
-		var then = [
+		var history = [
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:29:29"
+		}];
+		
+		var when = {
+			commandName: "CreateGame",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:34:29"
+		};
+		
+		var then = [
+		{
+			eventName: "BadCommand",
+			event: {
+				commandName: "CreateGame",
+				userName: "Gvendurst",
+				timeStamp: "2014-12-02T11:34:29"
+			}
 		}];
 
 		//Act
@@ -54,6 +62,7 @@ describe("Create game:", function(){
 		var result = eventHandler.handleEvent(when);
 
 		//Assert
-		should(eventHandler.history.length).be.exactly(1);
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 	});
 });

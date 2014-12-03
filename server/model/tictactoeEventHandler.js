@@ -6,8 +6,6 @@ module.exports = function(history){
 
 	var eventHandler = {};
 
-	eventHandler.history = history,
-
 	eventHandler.handleEvent = function(theEvent){
 		
 		var handler = {
@@ -20,7 +18,6 @@ module.exports = function(history){
 							userName: theEvent.userName,
 							timeStamp: theEvent.timeStamp
 						}];
-						this.history = resultEvents;
 						return resultEvents;
 					}
 				}
@@ -28,8 +25,6 @@ module.exports = function(history){
 		}
 
 		var resultEvents = handler[theEvent.commandName](theEvent);
-
-		history.push(resultEvents);
 
 		return resultEvents;
 	};
