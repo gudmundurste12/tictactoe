@@ -118,7 +118,7 @@ describe("Join game: ", function(){
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
-			details: "This user created the game"
+			message: "This user created the game"
 		}];
 
 		//Act

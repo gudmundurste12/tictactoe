@@ -28,5 +28,16 @@ module.exports = function(history){
 		return returnValue;
 	}
 
+	tictactoeState.createdBy = function(userName){
+		var returnValue = false;
+		_.each(history, function(currentEvent){
+			if(currentEvent.eventName === "GameCreated"
+				&& currentEvent.userName === userName){
+				returnValue = true;
+			}
+		});
+		return returnValue;
+	}	
+
 	return tictactoeState;
 }

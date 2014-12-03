@@ -45,8 +45,8 @@ module.exports = function(history){
 				}
 				else{
 					if(gameState.joinable() === true){
-						console.log("Joinable");
-						if(theEvent.userName !== null){
+						if(theEvent.userName !== null
+							&& !gameState.createdBy(theEvent.userName)){
 							var resultEvents = [
 							{
 								eventName: "GameJoined",
@@ -55,9 +55,18 @@ module.exports = function(history){
 							}];
 							return resultEvents;
 						}
+						else{
+							var resultEvents = [
+							{
+								eventName: "BadCommand",
+								event: theEvent,
+								history: history,
+								message: "This user created the game"
+							}];
+							return resultEvents;
+						}
 					}
 					else{
-						console.log("Not joinable");
 						var resultEvents = [
 						{
 							eventName: "BadCommand",
