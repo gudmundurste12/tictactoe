@@ -17,4 +17,10 @@ describe('GET /api/things', function() {
         done();
       });
   });
+
+  /*
+  it('Should fail', function(){
+    should(1).be.exactly(2);
+  });
+  */
 });
