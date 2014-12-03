@@ -25,7 +25,8 @@ module.exports = function(history){
 					resultEvents = [
 					{
 						eventName: "BadCommand",
-						event: theEvent
+						event: theEvent,
+						history: history
 					}];
 					return resultEvents;
 				}
