@@ -40,6 +40,10 @@ module.exports = function(history){
 		return tictactoeState.grid;
 	};
 
+	tictactoeState.insideGrid = function(cell){
+		return cell.x < 3 && cell.x >=  0 && cell.y < 3 && cell.y >=  0;
+	};
+
 	tictactoeState.updateGrid = function(theEvent){
 		if(theEvent instanceof Array){
 			_.each(theEvent, function(currentEvent){
@@ -52,18 +56,16 @@ module.exports = function(history){
 				tictactoeState.players[0] = theEvent.userName;
 			}
 			else if(theEvent.eventName === "GameJoined"){
-				tictactoeState.currentPlayer = theEvent.userName;
 				tictactoeState.players[1] = theEvent.userName;
 			}
 			else if(theEvent.eventName === "MoveMade"){
-				if(theEvent.userName === tictactoeState.players[0]){
-					if(tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] === ""){
+				if(tictactoeState.insideGrid(theEvent.cell)
+					&& tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] === ""){
+					if(theEvent.userName === tictactoeState.players[0]){
 						tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "x";
 						tictactoeState.currentPlayer = tictactoeState.players[1];
 					}
-				}
-				else if(theEvent.userName === tictactoeState.players[1]){
-					if(tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] === ""){
+					else if(theEvent.userName === tictactoeState.players[1]){
 						tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "o";
 						tictactoeState.currentPlayer = tictactoeState.players[0];
 					}
