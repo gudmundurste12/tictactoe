@@ -58,6 +58,16 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
 
+    //Reporters
+    reporters: ['progress', 'junit'],
+
+    //Default configuration for junit-reporter
+    junitReporter: {
+      ouptupFile: 'test-results.xml',
+      suite: ''
+    },
+
+
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
 
