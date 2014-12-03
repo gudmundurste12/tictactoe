@@ -54,7 +54,13 @@ describe("Create game:", function(){
 				commandName: "CreateGame",
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:34:29"
-			}
+			},
+			history: [
+			{
+				eventName: "GameCreated",
+				userName: "Gvendurst",
+				timeStamp: "2014-12-02T11:29:29"
+			}]
 		}];
 
 		//Act
