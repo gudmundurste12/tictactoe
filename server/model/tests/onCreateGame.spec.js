@@ -57,7 +57,8 @@ describe("Create game:", function(){
 				eventName: "GameCreated",
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
-			}]
+			}],
+			message: "Game has already been created"
 			//TODO: Add details field
 		}];
 

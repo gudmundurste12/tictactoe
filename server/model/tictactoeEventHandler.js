@@ -25,7 +25,8 @@ module.exports = function(history){
 					{
 						eventName: "BadCommand",
 						event: theEvent,
-						history: history
+						history: history,
+						message: "Game has already been created"
 					}];
 					return resultEvents;
 				}
@@ -37,7 +38,8 @@ module.exports = function(history){
 					{
 						eventName: "BadCommand",
 						event: theEvent,
-						history: history
+						history: history,
+						message: "Game has not been created"
 					}];
 					return resultEvents;
 				}
@@ -61,7 +63,7 @@ module.exports = function(history){
 							eventName: "BadCommand",
 							event: theEvent,
 							history: history,
-							details: "Game is full"
+							message: "Game is full"
 						}];
 						return resultEvents;
 					}

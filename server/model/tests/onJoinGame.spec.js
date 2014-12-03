@@ -23,7 +23,8 @@ describe("Join game: ", function(){
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
 			},
-			history: []
+			history: [],
+			message: "Game has not been created"
 		}];
 
 		//Act
@@ -75,7 +76,7 @@ describe("Join game: ", function(){
 				userName: "Gvendurst2",
 				timeStamp: "2014-12-02T11:34:29"
 			}],
-			details: "Game is full"
+			message: "Game is full"
 
 		}];
 
