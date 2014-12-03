@@ -1,12 +1,11 @@
 var should = require('should');
-//var _ = require('lodash');
 
 var tictactoeEventHandler = require('../tictactoeEventHandler');
 var tictactoeState = require('../tictactoeState');
 
 describe("Create game:", function(){
 	it("Given an empty history, handleEvent should only return the GameCreated event", function(){
-		//Assign
+		//Arrange
 		var history = [];
 		
 		var when = {
@@ -31,7 +30,7 @@ describe("Create game:", function(){
 	});
 
 	it("Given a non-empty history, a BadCommand event should be returned", function(){
-		//Assign
+		//Arrange
 		var history = [
 		{
 			eventName: "GameCreated",
@@ -72,7 +71,7 @@ describe("Create game:", function(){
 
 
 	it("Given an empty history and the GameCreated event, the gamestate should be an empty grid", function(){
-		//Assign
+		//Arrange
 		var history = [];
 		
 		var when = {
