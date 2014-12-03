@@ -42,12 +42,26 @@ module.exports = function(history){
 					return resultEvents;
 				}
 				else{
-					if(theEvent.userName !== null){
+					if(gameState.joinable() === true){
+						console.log("Joinable");
+						if(theEvent.userName !== null){
+							var resultEvents = [
+							{
+								eventName: "GameJoined",
+								userName: theEvent.userName,
+								timeStamp: theEvent.timeStamp
+							}];
+							return resultEvents;
+						}
+					}
+					else{
+						console.log("Not joinable");
 						var resultEvents = [
 						{
-							eventName: "GameCreated",
-							userName: theEvent.userName,
-							timeStamp: theEvent.timeStamp
+							eventName: "BadCommand",
+							event: theEvent,
+							history: history,
+							details: "Game is full"
 						}];
 						return resultEvents;
 					}

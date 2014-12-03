@@ -58,6 +58,7 @@ describe("Create game:", function(){
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
 			}]
+			//TODO: Add details field
 		}];
 
 		//Act

@@ -65,19 +65,18 @@ describe("Join game: ", function(){
 				timeStamp: "2014-12-02T11:39:29"
 			},
 			history: [
-			[
-				{
-					eventName: "GameCreated",
-					userName: "Gvendurst",
-					timeStamp: "2014-12-02T11:29:29"
-				},
-				{
-					eventName: "GameJoined",
-					userName: "Gvendurst2",
-					timeStamp: "2014-12-02T11:34:29"
-				}]
-			],
+			{
+				eventName: "GameCreated",
+				userName: "Gvendurst",
+				timeStamp: "2014-12-02T11:29:29"
+			},
+			{
+				eventName: "GameJoined",
+				userName: "Gvendurst2",
+				timeStamp: "2014-12-02T11:34:29"
+			}],
 			details: "Game is full"
+
 		}];
 
 		//Act

@@ -18,5 +18,15 @@ module.exports = function(history){
 		return grid;
 	};
 
+	tictactoeState.joinable = function(){
+		var returnValue = true;
+		_.each(history, function(currentEvent){
+			if(currentEvent.eventName === "GameJoined"){
+				returnValue = false;
+			}
+		});
+		return returnValue;
+	}
+
 	return tictactoeState;
 }
