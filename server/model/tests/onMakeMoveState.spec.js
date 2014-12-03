@@ -84,8 +84,8 @@ describe("tictactoeState on MakeMove", function(){
 		
 		var gridAfter = [
 		["x","",""],
-		["","","o"],
-		["","x",""]
+		["","","x"],
+		["","o",""]
 		];
 
 		//Act

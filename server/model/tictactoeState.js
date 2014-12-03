@@ -60,13 +60,13 @@ module.exports = function(history){
 			}
 			else if(theEvent.eventName === "MoveMade"){
 				if(tictactoeState.insideGrid(theEvent.cell)
-					&& tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] === ""){
+					&& tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] === ""){
 					if(theEvent.userName === tictactoeState.players[0]){
-						tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "x";
+						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "x";
 						tictactoeState.currentPlayer = tictactoeState.players[1];
 					}
 					else if(theEvent.userName === tictactoeState.players[1]){
-						tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "o";
+						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "o";
 						tictactoeState.currentPlayer = tictactoeState.players[0];
 					}
 				}
