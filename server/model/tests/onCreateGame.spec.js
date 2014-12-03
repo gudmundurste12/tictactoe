@@ -50,9 +50,10 @@ describe("Create game:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var eventHandler = tictactoeEventHandler(history);
+		var result = eventHandler.handleEvent(when);
 
 		//Assert
-		should(tictactoeEventHandler.history.length).be.exactly(1);
+		should(eventHandler.history.length).be.exactly(1);
 	});
 });
