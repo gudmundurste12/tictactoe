@@ -95,6 +95,6 @@ describe("Create game:", function(){
 		var gameState = tictactoeState(newHistory);
 
 		//Assert
-		should(gameState.getGrid().be.exactly(gridAfter));
+		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
 	});
 });
