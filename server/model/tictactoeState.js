@@ -13,8 +13,6 @@ module.exports = function(history){
 		["","",""]
 		];
 
-		console.log("Grid: " + grid);
-
 		//TODO: Update the grid according to the history
 
 		return grid;

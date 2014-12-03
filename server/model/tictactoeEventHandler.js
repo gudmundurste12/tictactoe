@@ -1,7 +1,6 @@
 module.exports = function(history){
 	var tictactoeState = require('./tictactoeState');
 
-	console.log("Creating game state");
 	var gameState = tictactoeState(history);
 
 	var eventHandler = {};
