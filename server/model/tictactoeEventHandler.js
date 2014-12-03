@@ -21,6 +21,14 @@ module.exports = function(history){
 						return resultEvents;
 					}
 				}
+				else{
+					resultEvents = [
+					{
+						eventName: "BadCommand",
+						event: theEvent
+					}];
+					return resultEvents;
+				}
 			}
 		}
 
