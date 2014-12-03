@@ -8,6 +8,9 @@ module.exports = function(history){
 
 	tictactoeState.currentPlayer = null;
 	tictactoeState.players = [];
+	tictactoeState.status = {
+		status: "Unresolved"
+	}
 
 	tictactoeState.grid = [
 	["","",""],
@@ -36,13 +39,71 @@ module.exports = function(history){
 		return returnValue;
 	}	
 
+	tictactoeState.insideGrid = function(cell){
+		return cell.x < 3 && cell.x >=  0 && cell.y < 3 && cell.y >=  0;
+	};
+
 	tictactoeState.getGrid = function(){
 		return tictactoeState.grid;
 	};
 
-	tictactoeState.insideGrid = function(cell){
-		return cell.x < 3 && cell.x >=  0 && cell.y < 3 && cell.y >=  0;
+	tictactoeState.winOnLineHorizontal = function(y){
+		return tictactoeState.grid[y][0] !== "" && tictactoeState.grid[y][0] === tictactoeState.grid[y][1] && tictactoeState.grid[y][0] === tictactoeState.grid[y][2];
+	}
+
+	tictactoeState.winOnLineVertical = function(x){
+		return tictactoeState.grid[0][x] !== "" && tictactoeState.grid[0][x] === tictactoeState.grid[1][x] && tictactoeState.grid[0][x] === tictactoeState.grid[2][x];
+	}
+
+	tictactoeState.winOnLineDiagonalDown = function(){
+		return tictactoeState.grid[0][0] !== "" && tictactoeState.grid[0][0] === tictactoeState.grid[1][1] && tictactoeState.grid[0][0] === tictactoeState.grid[2][2];
+	}
+
+	tictactoeState.winOnLineDiagonalUp = function(){
+		return tictactoeState.grid[2][0] !== "" && tictactoeState.grid[2][0] === tictactoeState.grid[1][1] && tictactoeState.grid[2][0] === tictactoeState.grid[0][2];
+	}
+
+	tictactoeState.gridFull = function(){
+		var returnValue = true;
+		_.each(tictactoeState.grid, function(currentRow){
+			_.each(currentRow, function(currentCell){
+				if(currentCell === ""){
+					returnValue = false;
+				}
+			});
+		});
+
+		return returnValue;
+	}
+
+	tictactoeState.getStatus = function(){
+		return tictactoeState.status;
 	};
+
+	tictactoeState.updateStatus = function(theEvent){
+		var win = false;
+		win |= tictactoeState.winOnLineVertical(theEvent.cell.x);
+		win |= tictactoeState.winOnLineHorizontal(theEvent.cell.y);
+		win |= tictactoeState.winOnLineDiagonalDown();
+		win |= tictactoeState.winOnLineDiagonalUp();
+
+		if(win){
+			tictactoeState.status = {
+				status: "Win",
+				userName: theEvent.userName
+			}
+		}
+		else if(tictactoeState.gridFull()){
+			tictactoeState.status = {
+				status: "Draw"
+			}
+		}
+		else{
+			tictactoeState.status = {
+				status: "Unresolved"
+			}
+		}
+	}
 
 	tictactoeState.updateGrid = function(theEvent){
 		if(theEvent instanceof Array){
@@ -60,13 +121,16 @@ module.exports = function(history){
 			}
 			else if(theEvent.eventName === "MoveMade"){
 				if(tictactoeState.insideGrid(theEvent.cell)
-					&& tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] === ""){
+					&& tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] === ""
+					&& tictactoeState.status.status === "Unresolved"){
 					if(theEvent.userName === tictactoeState.players[0]){
 						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "x";
+						tictactoeState.updateStatus(theEvent);
 						tictactoeState.currentPlayer = tictactoeState.players[1];
 					}
 					else if(theEvent.userName === tictactoeState.players[1]){
 						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "o";
+						tictactoeState.updateStatus(theEvent);
 						tictactoeState.currentPlayer = tictactoeState.players[0];
 					}
 				}
