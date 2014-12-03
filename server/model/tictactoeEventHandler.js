@@ -11,7 +11,7 @@ module.exports = function(history){
 			"CreateGame": function(theEvent){
 				if(history.length === 0){
 					if(theEvent.userName !== null){
-						resultEvents = [
+						var resultEvents = [
 						{
 							eventName: "GameCreated",
 							userName: theEvent.userName,
@@ -21,13 +21,36 @@ module.exports = function(history){
 					}
 				}
 				else{
-					resultEvents = [
+					var resultEvents = [
 					{
 						eventName: "BadCommand",
 						event: theEvent,
 						history: history
 					}];
 					return resultEvents;
+				}
+			},
+
+			"JoinGame": function(theEvent){
+				if(history.length === 0){
+					var resultEvents = [
+					{
+						eventName: "BadCommand",
+						event: theEvent,
+						history: history
+					}];
+					return resultEvents;
+				}
+				else{
+					if(theEvent.userName !== null){
+						var resultEvents = [
+						{
+							eventName: "GameCreated",
+							userName: theEvent.userName,
+							timeStamp: theEvent.timeStamp
+						}];
+						return resultEvents;
+					}
 				}
 			}
 		}
