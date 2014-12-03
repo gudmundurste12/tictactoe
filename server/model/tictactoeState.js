@@ -57,10 +57,16 @@ module.exports = function(history){
 			}
 			else if(theEvent.eventName === "MoveMade"){
 				if(theEvent.userName === tictactoeState.players[0]){
-					tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "x";
+					if(tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] === ""){
+						tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "x";
+						tictactoeState.currentPlayer = tictactoeState.players[1];
+					}
 				}
-				else{
-					tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "o";
+				else if(theEvent.userName === tictactoeState.players[1]){
+					if(tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] === ""){
+						tictactoeState.grid[theEvent.cell.x][theEvent.cell.y] = "o";
+						tictactoeState.currentPlayer = tictactoeState.players[0];
+					}
 				}
 			}
 		}
