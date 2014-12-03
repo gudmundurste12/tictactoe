@@ -19,6 +19,7 @@ describe("tictactoeState on CreateGame", function(){
 
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
+		should(gameState.currentPlayer).be.exactly(null);
 	});
 
 
@@ -42,6 +43,7 @@ describe("tictactoeState on CreateGame", function(){
 
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
+		should(gameState.currentPlayer).be.exactly("Gvendurst");
 	});
 
 	
@@ -70,5 +72,6 @@ describe("tictactoeState on CreateGame", function(){
 
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
+		should(gameState.currentPlayer).be.exactly("Gvendurst");
 	});
 });
