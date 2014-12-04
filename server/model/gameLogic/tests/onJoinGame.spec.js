@@ -18,7 +18,7 @@ describe("Join game: ", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "JoinGame",
 				userName: "Gvendurst",
 				gameId: "1",
@@ -65,7 +65,7 @@ describe("Join game: ", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "JoinGame",
 				userName: "Gvendurst3",
 				gameId: "1",
@@ -119,7 +119,7 @@ describe("Join game: ", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "JoinGame",
 				userName: "Gvendurst",
 				gameId: "1",
@@ -165,7 +165,7 @@ describe("Join game: ", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "JoinGame",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
@@ -209,7 +209,7 @@ describe("Join game: ", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "JoinGame",
 				userName: "Gvendurst2",
 				timeStamp: "2014-12-02T11:29:29"

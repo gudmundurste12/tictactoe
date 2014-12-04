@@ -44,7 +44,7 @@ describe("Create game:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "CreateGame",
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
@@ -74,7 +74,7 @@ describe("Create game:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "CreateGame",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
@@ -112,7 +112,7 @@ describe("Create game:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "CreateGame",
 				userName: "Gvendurst",
 				gameId: "1",

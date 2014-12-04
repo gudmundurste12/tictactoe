@@ -9,5 +9,12 @@ describe("", function(){
 		}
 	};
 
+
+	var commandHandlerStub = {
+		handleCommand: function(command){
+
+		}
+	};
+
 	
 });

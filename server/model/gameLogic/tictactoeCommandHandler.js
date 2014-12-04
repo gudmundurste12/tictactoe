@@ -10,85 +10,85 @@ module.exports = function(history){
 		return value === undefined || value === null;
 	}
 
-	var badCommand = function(message, event, history){
+	var badCommand = function(message, command, history){
 		return {
 			eventName: "BadCommand",
-			event: event,
+			command: command,
 			history: history,
-			gameId: event.gameId,
+			gameId: command.gameId,
 			message: message
 		}
 	};
 
-	commandHandler.handleCommand = function(theEvent){
+	commandHandler.handleCommand = function(theCommand){
 		
 		var handler = {
-			"CreateGame": function(theEvent){
+			"CreateGame": function(theCommand){
 				if(history.length === 0){
-					if(!missingValue(theEvent.userName) &&
-						!missingValue(theEvent.gameId)){
+					if(!missingValue(theCommand.userName) &&
+						!missingValue(theCommand.gameId)){
 						var resultEvents = [
 						{
 							eventName: "GameCreated",
-							userName: theEvent.userName,
-							gameId: theEvent.gameId,
-							timeStamp: theEvent.timeStamp
+							userName: theCommand.userName,
+							gameId: theCommand.gameId,
+							timeStamp: theCommand.timeStamp
 						}];
 						return resultEvents;
 					}
 					else{
 						var resultEvents = [
-							badCommand("Some fields are missing", theEvent, history)
+							badCommand("Some fields are missing", theCommand, history)
 						];
 						return resultEvents;	
 					}
 				}
 				else{
 					var resultEvents = [
-						badCommand("Game has already been created", theEvent, history)
+						badCommand("Game has already been created", theCommand, history)
 					];
 					return resultEvents;
 				}
 			},
 
-			"JoinGame": function(theEvent){
+			"JoinGame": function(theCommand){
 				if(history.length === 0){
 					var resultEvents = [
-						badCommand("Game has not been created", theEvent, history)
+						badCommand("Game has not been created", theCommand, history)
 					];
 					return resultEvents;
 				}
 				else{
 					if(gameState.joinable() === true){
-						if(!gameState.createdBy(theEvent.userName)){
-							if(!missingValue(theEvent.gameId)
-								&& !missingValue(theEvent.userName)){
+						if(!gameState.createdBy(theCommand.userName)){
+							if(!missingValue(theCommand.gameId)
+								&& !missingValue(theCommand.userName)){
 								var resultEvents = [
 								{
 									eventName: "GameJoined",
-									userName: theEvent.userName,
-									gameId: theEvent.gameId,
-									timeStamp: theEvent.timeStamp
+									userName: theCommand.userName,
+									gameId: theCommand.gameId,
+									timeStamp: theCommand.timeStamp
 								}];
 								return resultEvents;
 							}
 							else{
 								var resultEvents = [
-									badCommand("Some fields are missing", theEvent, history)
+									badCommand("Some fields are missing", theCommand, history)
 								];
 								return resultEvents;
 							}
 						}
 						else{
 							var resultEvents = [
-								badCommand("This user created the game", theEvent, history)
+								badCommand("This user created the game", theCommand, history)
 							];
 							return resultEvents;
 						}
 					}
 					else{
 						var resultEvents = [
-							badCommand("Game is full", theEvent, history)
+							badCommand("Game is full", theCommand, history)
 						];
 						return resultEvents;
 					}
@@ -96,36 +96,36 @@ module.exports = function(history){
 			},
 
 			//TODO: Should this check for a legal move and game won?
-			"MakeMove": function(theEvent){
+			"MakeMove": function(theCommand){
 				if(history.length === 0){
 					var resultEvents = [
-						badCommand("Game has not been created", theEvent, history)
+						badCommand("Game has not been created", theCommand, history)
 					];
 					return resultEvents;
 				}
 				else if(history.length === 1){
 					var resultEvents = [
-						badCommand("Game has not been joined", theEvent, history)
+						badCommand("Game has not been joined", theCommand, history)
 					];
 					return resultEvents;
 				}
 				else{
-					if(!missingValue(theEvent.userName)
-						&& !missingValue(theEvent.gameId)
-						&& !missingValue(theEvent.cell)){
+					if(!missingValue(theCommand.userName)
+						&& !missingValue(theCommand.gameId)
+						&& !missingValue(theCommand.cell)){
 						var resultEvents = [
 						{
 							eventName: "MoveMade",
-							userName: theEvent.userName,
-							gameId: theEvent.gameId,
-							timeStamp: theEvent.timeStamp,
-							cell: theEvent.cell
+							userName: theCommand.userName,
+							gameId: theCommand.gameId,
+							timeStamp: theCommand.timeStamp,
+							cell: theCommand.cell
 						}];
 						return resultEvents;
 					}
 					else{
 						var resultEvents = [
-							badCommand("Some fields are missing", theEvent, history)
+							badCommand("Some fields are missing", theCommand, history)
 						];
 						return resultEvents;
 					}
@@ -133,7 +133,7 @@ module.exports = function(history){
 			}
 		}
 
-		var resultEvents = handler[theEvent.commandName](theEvent);
+		var resultEvents = handler[theCommand.commandName](theCommand);
 
 		return resultEvents;
 	};

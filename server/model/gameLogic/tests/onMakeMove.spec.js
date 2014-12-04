@@ -18,7 +18,7 @@ describe("Make move:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "MakeMove",
 				userName: "Gvendurst",
 				gameId: "1",
@@ -57,7 +57,7 @@ describe("Make move:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "MakeMove",
 				userName: "Gvendurst2",
 				gameId: "1",
@@ -112,7 +112,7 @@ describe("Make move:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "MakeMove",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29",
@@ -176,7 +176,7 @@ describe("Make move:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "MakeMove",
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29",
@@ -236,7 +236,7 @@ describe("Make move:", function(){
 		var then = [
 		{
 			eventName: "BadCommand",
-			event: {
+			command: {
 				commandName: "MakeMove",
 				userName: "Gvendurst",
 				gameId: "1",
