@@ -100,6 +100,7 @@ module.exports = function(history){
 					}];
 					return resultEvents;
 				}
+				
 			}
 		}
 
