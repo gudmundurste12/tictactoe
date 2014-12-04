@@ -62,7 +62,7 @@ describe("Make move:", function(){
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
-			message: "Game has not been created"
+			message: "Game has not been joined"
 		}];
 
 		//Act

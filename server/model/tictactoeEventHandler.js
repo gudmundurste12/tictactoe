@@ -90,6 +90,16 @@ module.exports = function(history){
 					}];
 					return resultEvents;
 				}
+				else if(history.length === 1){
+					var resultEvents = [
+					{
+						eventName: "BadCommand",
+						event: theEvent,
+						history: history,
+						message: "Game has not been joined"
+					}];
+					return resultEvents;
+				}
 			}
 		}
 
