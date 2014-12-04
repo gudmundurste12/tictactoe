@@ -101,8 +101,8 @@ describe("Make move:", function(){
 		var then = [
 		{
 			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:34:29",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
 				y: 1

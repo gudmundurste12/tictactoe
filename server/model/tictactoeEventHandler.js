@@ -100,7 +100,16 @@ module.exports = function(history){
 					}];
 					return resultEvents;
 				}
-				
+				else{
+					var resultEvents = [
+					{
+						eventName: "MoveMade",
+						userName: theEvent.userName,
+						timeStamp: theEvent.timeStamp,
+						cell: theEvent.cell
+					}];
+					return resultEvents;
+				}
 			}
 		}
 

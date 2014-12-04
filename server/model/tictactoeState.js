@@ -107,17 +107,21 @@ module.exports = function(history){
 
 	tictactoeState.updateGrid = function(theEvent){
 		if(theEvent instanceof Array){
+			var rc = 0;
 			_.each(theEvent, function(currentEvent){
-				tictactoeState.updateGrid(currentEvent);
+				rc |= tictactoeState.updateGrid(currentEvent);
 			});
+			return rc;
 		}
 		else{
 			if(theEvent.eventName === "GameCreated"){
 				tictactoeState.currentPlayer = theEvent.userName;
 				tictactoeState.players[0] = theEvent.userName;
+				return 0;
 			}
 			else if(theEvent.eventName === "GameJoined"){
 				tictactoeState.players[1] = theEvent.userName;
+				return 0;
 			}
 			else if(theEvent.eventName === "MoveMade"){
 				if(tictactoeState.insideGrid(theEvent.cell)
@@ -133,6 +137,10 @@ module.exports = function(history){
 						tictactoeState.updateStatus(theEvent);
 						tictactoeState.currentPlayer = tictactoeState.players[0];
 					}
+					return 0;
+				}
+				else{
+					return 1;
 				}
 			}
 		}
