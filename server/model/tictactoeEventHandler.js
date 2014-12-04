@@ -111,8 +111,7 @@ module.exports = function(history){
 				else{
 					if(!missingValue(theEvent.userName)
 						&& !missingValue(theEvent.gameId)
-						&& !missingValue(theEvent.cell.x)
-						&& !missingValue(theEvent.cell.y)){
+						&& !missingValue(theEvent.cell)){
 						var resultEvents = [
 						{
 							eventName: "MoveMade",
@@ -125,7 +124,7 @@ module.exports = function(history){
 					}
 					else{
 						var resultEvents = [
-							badCommand("Some values are missing", theEvent, history)
+							badCommand("Some fields are missing", theEvent, history)
 						];
 						return resultEvents;
 					}

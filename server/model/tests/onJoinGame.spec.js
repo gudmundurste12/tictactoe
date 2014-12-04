@@ -146,6 +146,93 @@ describe("Join game: ", function(){
 	});
 
 
+	it("A BadCommand event should be returned if userName is missing", function(){
+		//Arrange
+		var history = [
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		}];
+		
+		var when = {
+			commandName: "JoinGame",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		};
+		
+		var then = [
+		{
+			eventName: "BadCommand",
+			event: {
+				commandName: "JoinGame",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:29:29"
+			},
+			history: [
+			{
+				eventName: "GameCreated",
+				userName: "Gvendurst",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:29:29"
+			}],
+			gameId: "1",
+			message: "Some fields are missing"
+		}];
+
+		//Act
+		var result = tictactoeEventHandler(history).handleEvent(when);
+
+		//Assert
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
+	});
+
+
+	it("A BadCommand event should be returned if gameId is missing", function(){
+		//Arrange
+		var history = [
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		}];
+		
+		var when = {
+			commandName: "JoinGame",
+			userName: "Gvendurst2",
+			timeStamp: "2014-12-02T11:29:29"
+		};
+		
+		var then = [
+		{
+			eventName: "BadCommand",
+			event: {
+				commandName: "JoinGame",
+				userName: "Gvendurst2",
+				timeStamp: "2014-12-02T11:29:29"
+			},
+			history: [
+			{
+				eventName: "GameCreated",
+				userName: "Gvendurst",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:29:29"
+			}],
+			message: "Some fields are missing"
+		}];
+
+		//Act
+		var result = tictactoeEventHandler(history).handleEvent(when);
+
+		//Assert
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
+	});
+
+
 	it("A game should be joinable if it has been created and not joined", function(){
 		//Arrange
 		var history = [
