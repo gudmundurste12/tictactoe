@@ -38,6 +38,7 @@ describe("tictactoeState on MakeMove", function(){
 
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
+		should(gameState.currentPlayer).be.exactly("Gvendurst2");
 	});
 
 
