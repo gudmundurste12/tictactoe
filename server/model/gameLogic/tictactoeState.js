@@ -1,5 +1,7 @@
 var _ = require('lodash');
 
+
+//TODO: Comment the code, and soon
 module.exports = function(history){
 	
 	var tictactoeState = {};

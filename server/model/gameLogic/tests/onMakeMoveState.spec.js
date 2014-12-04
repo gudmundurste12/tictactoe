@@ -1,6 +1,6 @@
 var should = require('should');
 
-var tictactoeEventHandler = require('../tictactoeEventHandler');
+var tictactoeCommandHandler = require('../tictactoeCommandHandler');
 var tictactoeState = require('../tictactoeState');
 
 describe("tictactoeState on MakeMove", function(){

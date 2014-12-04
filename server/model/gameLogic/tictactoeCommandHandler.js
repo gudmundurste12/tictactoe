@@ -1,9 +1,10 @@
+//TODO: Comment the code, and soon
 module.exports = function(history){
 	var tictactoeState = require('./tictactoeState');
 
 	var gameState = tictactoeState(history);
 
-	var eventHandler = {};
+	var commandHandler = {};
 
 	var missingValue = function(value){
 		return value === undefined || value === null;
@@ -19,7 +20,7 @@ module.exports = function(history){
 		}
 	};
 
-	eventHandler.handleEvent = function(theEvent){
+	commandHandler.handleCommand = function(theEvent){
 		
 		var handler = {
 			"CreateGame": function(theEvent){
@@ -138,5 +139,5 @@ module.exports = function(history){
 	};
 
 
-	return eventHandler;
+	return commandHandler;
 }

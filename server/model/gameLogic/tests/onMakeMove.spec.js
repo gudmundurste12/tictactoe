@@ -1,6 +1,6 @@
 var should = require('should');
 
-var tictactoeEventHandler = require('../tictactoeEventHandler');
+var tictactoeCommandHandler = require('../tictactoeCommandHandler');
 var tictactoeState = require('../tictactoeState');
 
 describe("Make move:", function(){
@@ -30,8 +30,8 @@ describe("Make move:", function(){
 		}];
 
 		//Act
-		var eventHandler = tictactoeEventHandler(history);
-		var result = eventHandler.handleEvent(when);
+		var eventHandler = tictactoeCommandHandler(history);
+		var result = eventHandler.handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -74,8 +74,8 @@ describe("Make move:", function(){
 		}];
 
 		//Act
-		var eventHandler = tictactoeEventHandler(history);
-		var result = eventHandler.handleEvent(when);
+		var eventHandler = tictactoeCommandHandler(history);
+		var result = eventHandler.handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -139,7 +139,7 @@ describe("Make move:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var result = tictactoeCommandHandler(history).handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -202,7 +202,7 @@ describe("Make move:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var result = tictactoeCommandHandler(history).handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -260,7 +260,7 @@ describe("Make move:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var result = tictactoeCommandHandler(history).handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -308,8 +308,8 @@ describe("Make move:", function(){
 		}];
 
 		//Act
-		var eventHandler = tictactoeEventHandler(history);
-		var result = eventHandler.handleEvent(when);
+		var eventHandler = tictactoeCommandHandler(history);
+		var result = eventHandler.handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);

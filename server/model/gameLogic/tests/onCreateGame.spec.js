@@ -1,10 +1,10 @@
 var should = require('should');
 
-var tictactoeEventHandler = require('../tictactoeEventHandler');
+var tictactoeCommandHandler = require('../tictactoeCommandHandler');
 var tictactoeState = require('../tictactoeState');
 
 describe("Create game:", function(){
-	it("Given an empty history, handleEvent should only return the GameCreated event", function(){
+	it("Given an empty history, handleCommand should only return the GameCreated event", function(){
 		//Arrange
 		var history = [];
 		
@@ -24,7 +24,7 @@ describe("Create game:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var result = tictactoeCommandHandler(history).handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -54,7 +54,7 @@ describe("Create game:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var result = tictactoeCommandHandler(history).handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -85,7 +85,7 @@ describe("Create game:", function(){
 		}];
 
 		//Act
-		var result = tictactoeEventHandler(history).handleEvent(when);
+		var result = tictactoeCommandHandler(history).handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
@@ -130,8 +130,8 @@ describe("Create game:", function(){
 		}];
 
 		//Act
-		var eventHandler = tictactoeEventHandler(history);
-		var result = eventHandler.handleEvent(when);
+		var eventHandler = tictactoeCommandHandler(history);
+		var result = eventHandler.handleCommand(when);
 
 		//Assert
 		should(result.length).be.exactly(1);
