@@ -11,6 +11,7 @@ describe("Make move:", function(){
 		var when = {
 			commandName: "MakeMove",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		};
 
@@ -20,9 +21,11 @@ describe("Make move:", function(){
 			event: {
 				commandName: "MakeMove",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			},
 			history: [],
+			gameId: "1",
 			message: "Game has not been created"
 		}];
 
@@ -40,12 +43,14 @@ describe("Make move:", function(){
 		var history = [{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		}];
 
 		var when = {
 			commandName: "MakeMove",
 			userName: "Gvendurst2",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		};
 
@@ -55,6 +60,7 @@ describe("Make move:", function(){
 			event: {
 				commandName: "MakeMove",
 				userName: "Gvendurst2",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			},
 			history: [{
@@ -62,6 +68,7 @@ describe("Make move:", function(){
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
+			gameId: "1",
 			message: "Game has not been joined"
 		}];
 
@@ -80,17 +87,20 @@ describe("Make move:", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		},
 		{
 			eventName: "GameJoined",
 			userName: "Gvendurst2",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:34:29"
 		}];
 
 		var when = {
 			commandName: "MakeMove",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -102,6 +112,7 @@ describe("Make move:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,

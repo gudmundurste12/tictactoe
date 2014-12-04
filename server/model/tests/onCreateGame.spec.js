@@ -3,7 +3,6 @@ var should = require('should');
 var tictactoeEventHandler = require('../tictactoeEventHandler');
 var tictactoeState = require('../tictactoeState');
 
-//TODO: Add game id
 describe("Create game:", function(){
 	it("Given an empty history, handleEvent should only return the GameCreated event", function(){
 		//Arrange
@@ -12,6 +11,7 @@ describe("Create game:", function(){
 		var when = {
 			commandName: "CreateGame",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		};
 		
@@ -19,6 +19,7 @@ describe("Create game:", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		}];
 
@@ -36,12 +37,14 @@ describe("Create game:", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		}];
 		
 		var when = {
 			commandName: "CreateGame",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:34:29"
 		};
 		
@@ -51,12 +54,14 @@ describe("Create game:", function(){
 			event: {
 				commandName: "CreateGame",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:34:29"
 			},
 			history: [
 			{
 				eventName: "GameCreated",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
 			message: "Game has already been created"

@@ -11,6 +11,7 @@ describe("Join game: ", function(){
 		var when = {
 			commandName: "JoinGame",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		};
 
@@ -20,9 +21,11 @@ describe("Join game: ", function(){
 			event: {
 				commandName: "JoinGame",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			},
 			history: [],
+			gameId: "1",
 			message: "Game has not been created"
 		}];
 
@@ -42,17 +45,20 @@ describe("Join game: ", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		},
 		{
 			eventName: "GameJoined",
 			userName: "Gvendurst2",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:34:29"
 		}];
 
 		var when = {
 			commandName: "JoinGame",
 			userName: "Gvendurst3",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29"
 		};
 
@@ -62,19 +68,23 @@ describe("Join game: ", function(){
 			event: {
 				commandName: "JoinGame",
 				userName: "Gvendurst3",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:39:29"
 			},
 			history: [
 			{
 				eventName: "GameCreated",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			},
 			{
 				eventName: "GameJoined",
 				userName: "Gvendurst2",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:34:29"
 			}],
+			gameId: "1",
 			message: "Game is full"
 
 		}];
@@ -95,12 +105,14 @@ describe("Join game: ", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		}];
 
 		var when = {
 			commandName: "JoinGame",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:34:29"
 		};
 
@@ -110,14 +122,17 @@ describe("Join game: ", function(){
 			event: {
 				commandName: "JoinGame",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:34:29"
 			},
 			history: [
 			{
 				eventName: "GameCreated",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
+			gameId: "1",
 			message: "This user created the game"
 		}];
 
@@ -137,12 +152,14 @@ describe("Join game: ", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29"
 		}];
 
 		var when = {
 			commandName: "JoinGame",
 			userName: "Gvendurst2",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:34:29"
 		};
 
@@ -150,6 +167,7 @@ describe("Join game: ", function(){
 		{
 			eventName: "GameJoined",
 			userName: "Gvendurst2",
+			gameId: "1",
 			timeStamp: "2014-12-02T11:34:29"
 		}];
 
