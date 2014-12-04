@@ -145,6 +145,12 @@ module.exports = function(history){
 					return 1;
 				}
 			}
+			else if(theEvent.eventName === "BadCommand"){
+				return 0;
+			}
+			else{
+				return 1;
+			}
 		}
 	}
 
