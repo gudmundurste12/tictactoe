@@ -1,33 +1,37 @@
 var should = require("should");
 var _ = require("lodash");
 
-describe("", function(){
-	//Arrange
-	var eventStoreCalledWithId = undefined;
-	var eventStoreStub = {
-		setHistory: function(id){
-			eventStoreCalledWithId = id;
-		}
-	};
+describe("BoundedContext", function(){
+	it("Events should be loaded into a command handler and a command should be executed", function(){
+		//Arrange
+		var eventStoreCalledWithId = undefined;
+		var eventStoreStub = {
+			getHistory: function(id){
+				eventStoreCalledWithId = id;
+			}
+		};
 
-	var commandHandlerCalledWithCommand = undefined;
-	var commandHandlerStub = {
-		handleCommand: function(command){
-			commandHandlerCalledWithCommand = command;
-		}
-	};
+		var commandHandlerCalledWithCommand = undefined;
+		var commandHandlerStub = function(history){
+			return{
+				handleCommand: function(command){
+					commandHandlerCalledWithCommand = command;
+				}
+			}
+		};
 
-	var textCommand = {
-		command: "TestCommand",
-		gameId: "1"
-	};
+		var testCommand = {
+			command: "TestCommand",
+			gameId: "1"
+		};
 
-	var boundedContext = require("../tictactoeBoundedContext.js");
+		var boundedContext = require("../tictactoeBoundedContext.js")(eventStoreStub, commandHandlerStub);
 
-	//Act
-	boundedContext.handleCommand(testCommand);
+		//Act
+		boundedContext.handleCommand(testCommand);
 
-	//Assert
-	should(eventStoreCalledWithId).be.exactly("1");
-	should(commandHandlerCalledWithCommand).eql(command);
+		//Assert
+		should(eventStoreCalledWithId).be.exactly("1");
+		should(commandHandlerCalledWithCommand).eql(testCommand);
+	});
 });
