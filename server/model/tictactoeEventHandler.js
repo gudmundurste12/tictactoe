@@ -77,6 +77,19 @@ module.exports = function(history){
 						return resultEvents;
 					}
 				}
+			},
+
+			"MakeMove": function(theEvent){
+				if(history.length === 0){
+					var resultEvents = [
+					{
+						eventName: "BadCommand",
+						event: theEvent,
+						history: history,
+						message: "Game has not been created"
+					}];
+					return resultEvents;
+				}
 			}
 		}
 
