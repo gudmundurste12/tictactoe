@@ -33,12 +33,18 @@ describe("tictactoeState on MakeMove", function(){
 		["","",""]
 		];
 
+		var gameStatusAfter = {
+			status: "Unresolved"
+		};
+
+
 		//Act
 		var gameState = tictactoeState(history);
 
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
 		should(gameState.currentPlayer).be.exactly("Gvendurst2");
+		should(JSON.stringify(gameState.getStatus())).be.exactly(JSON.stringify(gameStatusAfter));
 	});
 
 
@@ -89,12 +95,17 @@ describe("tictactoeState on MakeMove", function(){
 		["","o",""]
 		];
 
+		var gameStatusAfter = {
+			status: "Unresolved"
+		};
+		
 		//Act
 		var gameState = tictactoeState(history);
-
+		
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
 		should(gameState.currentPlayer).be.exactly("Gvendurst2");
+		should(JSON.stringify(gameState.getStatus())).be.exactly(JSON.stringify(gameStatusAfter));
 	});
 
 
@@ -136,12 +147,17 @@ describe("tictactoeState on MakeMove", function(){
 		["","",""]
 		];
 
+		var gameStatusAfter = {
+			status: "Unresolved"
+		};
+
 		//Act
 		var gameState = tictactoeState(history);
-
+		
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
 		should(gameState.currentPlayer).be.exactly("Gvendurst2");
+		should(JSON.stringify(gameState.getStatus())).be.exactly(JSON.stringify(gameStatusAfter));
 	});
 
 	it("The players should not be able to pick a cell that is not on the grid", function(){
@@ -218,11 +234,16 @@ describe("tictactoeState on MakeMove", function(){
 		["","",""]
 		];
 
+		var gameStatusAfter = {
+			status: "Unresolved"
+		};
+
 		//Act
 		var gameState = tictactoeState(history);
 
 		//Assert
 		should(JSON.stringify(gameState.getGrid())).be.exactly(JSON.stringify(gridAfter));
 		should(gameState.currentPlayer).be.exactly("Gvendurst");
+		should(JSON.stringify(gameState.getStatus())).be.exactly(JSON.stringify(gameStatusAfter));
 	});
 });
