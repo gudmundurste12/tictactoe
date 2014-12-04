@@ -64,6 +64,7 @@ describe("Create game:", function(){
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
+			gameId: "1",
 			message: "Game has already been created"
 		}];
 

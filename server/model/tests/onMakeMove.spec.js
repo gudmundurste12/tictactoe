@@ -66,6 +66,7 @@ describe("Make move:", function(){
 			history: [{
 				eventName: "GameCreated",
 				userName: "Gvendurst",
+				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29"
 			}],
 			gameId: "1",
