@@ -35,6 +35,45 @@ describe("Make move:", function(){
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 	});
 
+	it("No move should be made if the game has not been joined", function(){
+		//Arrange
+		var history = [{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:29:29"
+		}];
+
+		var when = {
+			commandName: "MakeMove",
+			userName: "Gvendurst2",
+			timeStamp: "2014-12-02T11:29:29"
+		};
+
+		var then = [
+		{
+			eventName: "BadCommand",
+			event: {
+				commandName: "MakeMove",
+				userName: "Gvendurst2",
+				timeStamp: "2014-12-02T11:29:29"
+			},
+			history: [{
+				eventName: "GameCreated",
+				userName: "Gvendurst",
+				timeStamp: "2014-12-02T11:29:29"
+			}],
+			message: "Game has not been created"
+		}];
+
+		//Act
+		var eventHandler = tictactoeEventHandler(history);
+		var result = eventHandler.handleEvent(when);
+
+		//Assert
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
+	});
+
 	it("Should return a MoveMade event", function(){
 		
 	});
