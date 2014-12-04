@@ -9,6 +9,16 @@ module.exports = function(history){
 		return value === undefined || value === null;
 	}
 
+	var badCommand = function(message, event, history){
+		return {
+			eventName: "BadCommand",
+			event: event,
+			history: history,
+			gameId: event.gameId,
+			message: message
+		}
+	};
+
 	eventHandler.handleEvent = function(theEvent){
 		
 		var handler = {
@@ -27,25 +37,15 @@ module.exports = function(history){
 					}
 					else{
 						var resultEvents = [
-						{
-							eventName: "BadCommand",
-							event: theEvent,
-							history: history,
-							gameId: theEvent.gameId,
-							message: "Some fields are missing"
-						}];
+							badCommand("Some fields are missing", theEvent, history)
+						];
 						return resultEvents;	
 					}
 				}
 				else{
 					var resultEvents = [
-					{
-						eventName: "BadCommand",
-						event: theEvent,
-						history: history,
-						gameId: theEvent.gameId,
-						message: "Game has already been created"
-					}];
+						badCommand("Game has already been created", theEvent, history)
+					];
 					return resultEvents;
 				}
 			},
@@ -53,13 +53,8 @@ module.exports = function(history){
 			"JoinGame": function(theEvent){
 				if(history.length === 0){
 					var resultEvents = [
-					{
-						eventName: "BadCommand",
-						event: theEvent,
-						history: history,
-						gameId: theEvent.gameId,
-						message: "Game has not been created"
-					}];
+						badCommand("Game has not been created", theEvent, history)
+					];
 					return resultEvents;
 				}
 				else{
@@ -78,37 +73,22 @@ module.exports = function(history){
 							}
 							else{
 								var resultEvents = [
-								{
-									eventName: "BadCommand",
-									event: theEvent,
-									history: history,
-									gameId: theEvent.gameId,
-									message: "Some fields are missing"
-								}];
+									badCommand("Some fields are missing", theEvent, history)
+								];
 								return resultEvents;
 							}
 						}
 						else{
 							var resultEvents = [
-							{
-								eventName: "BadCommand",
-								event: theEvent,
-								history: history,
-								gameId: theEvent.gameId,
-								message: "This user created the game"
-							}];
+								badCommand("This user created the game", theEvent, history)
+							];
 							return resultEvents;
 						}
 					}
 					else{
 						var resultEvents = [
-						{
-							eventName: "BadCommand",
-							event: theEvent,
-							history: history,
-							gameId: theEvent.gameId,
-							message: "Game is full"
-						}];
+							badCommand("Game is full", theEvent, history)
+						];
 						return resultEvents;
 					}
 				}
@@ -118,24 +98,14 @@ module.exports = function(history){
 			"MakeMove": function(theEvent){
 				if(history.length === 0){
 					var resultEvents = [
-					{
-						eventName: "BadCommand",
-						event: theEvent,
-						history: history,
-						gameId: theEvent.gameId,
-						message: "Game has not been created"
-					}];
+						badCommand("Game has not been created", theEvent, history)
+					];
 					return resultEvents;
 				}
 				else if(history.length === 1){
 					var resultEvents = [
-					{
-						eventName: "BadCommand",
-						event: theEvent,
-						history: history,
-						gameId: theEvent.gameId,
-						message: "Game has not been joined"
-					}];
+						badCommand("Game has not been joined", theEvent, history)
+					];
 					return resultEvents;
 				}
 				else{
@@ -155,13 +125,8 @@ module.exports = function(history){
 					}
 					else{
 						var resultEvents = [
-						{
-							eventName: "BadCommand",
-							event: theEvent,
-							history: history,
-							gameId: theEvent.gameId,
-							message: "Some values are missing"
-						}];
+							badCommand("Some values are missing", theEvent, history)
+						];
 						return resultEvents;
 					}
 				}
