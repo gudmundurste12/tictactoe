@@ -1,3 +1,5 @@
-exports.createGame = function(req, res){
-	res.json("");
+exports.handleCommand = function(req, res){
+	console.log("In the controller");
+	var returnValue = "HERP";
+	res.json(returnValue);
 };

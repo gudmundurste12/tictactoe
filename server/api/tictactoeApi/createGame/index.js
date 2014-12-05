@@ -1,13 +1,13 @@
 var express = require("express");
 
-var controller = require("./tictactoe.controller");
+var controller = require("../tictactoe.controller");
 
 module.exports = function(app){
 	var router = express.Router();
 
-	router.post("/", controller.createGame);
+	router.post("/", controller.handleCommand);
 
 	return {
-		router: router;
+		router: router
 	}
 }
