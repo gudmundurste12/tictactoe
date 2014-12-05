@@ -134,7 +134,6 @@ module.exports = function(history){
 		}
 
 		var resultEvents = handler[theCommand.commandName](theCommand);
-
 		return resultEvents;
 	};
 
