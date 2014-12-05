@@ -4,7 +4,7 @@ var request = require("supertest");
 
 
 describe("Controller: creating game", function(){
-	it("A CreateGame command should give a GameCreated event", function(done){
+	it("A CreateGame command should return a list of events", function(done){
 		var command = {
 			commandName: "CreateGame",
 			userName: "Gvendurst",

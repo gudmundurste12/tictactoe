@@ -3,7 +3,7 @@ var tictactoeCommandHandler = require("../../model/gameLogic/tictactoeCommandHan
 var app = require("../../app");
 
 exports.handleCommand = function(req, res){
-	
+	//TODO: Test if this really does any work.
 	if(!app.eventStore){
 		app.eventStore = require("../../eventStore/memoryStore")();
 	}
