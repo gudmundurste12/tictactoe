@@ -30,7 +30,7 @@ describe("Controller: tictactoeController", function(){
 		}).respond(
 		{
 			response: [
-				{}
+				{value: "TestValue"}
 			]
 		});
 
@@ -41,6 +41,6 @@ describe("Controller: tictactoeController", function(){
 		httpBackend.flush();
 
 		expect(scope.events.length).toBe(1);
-		expect(scope.events[0]).to.equal({});
+		expect(scope.events[0]).toEqual({value: "TestValue"});
 	});
 });
