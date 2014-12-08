@@ -4,8 +4,8 @@ var _ = require("lodash");
 describe("BoundedContext", function(){
 	it("Events should be loaded into a command handler and a command should be executed", function(){
 		//Arrange
-		var eventStoreCalledWithId = undefined;
-		var storeEventsCalledWithId = undefined;
+		var eventStoreCalledWithId;
+		var storeEventsCalledWithId;
 		var eventStoreStub = {
 			getHistory: function(id){
 				eventStoreCalledWithId = id;
@@ -15,7 +15,7 @@ describe("BoundedContext", function(){
 			}
 		};
 
-		var commandHandlerCalledWithCommand = undefined;
+		var commandHandlerCalledWithCommand;
 		var commandHandlerStub = function(history){
 			return{
 				handleCommand: function(command){

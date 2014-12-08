@@ -1,4 +1,6 @@
-angular.module("tictactoeApp").controller("tictactoeController", function($scope, $http){
+'use strict';
+
+angular.module('tictactoeApp').controller('tictactoeController', function($scope, $http){
 	$scope.updateEvents = function(events){
 		$scope.events = events;
 	};
@@ -6,12 +8,12 @@ angular.module("tictactoeApp").controller("tictactoeController", function($scope
 	$scope.createGame = function(){
 		var requestBody = {
 			gameId: $scope.gameId,
-			commandName: "CreateGame",
+			commandName: 'CreateGame',
 			userName: $scope.userName,
-			timeStamp: "2014-12-02T11:29:29"
+			timeStamp: '2014-12-02T11:29:29'
 		};
 
-		var requestPromise = $http.post("/api/createGame/",
+		var requestPromise = $http.post('/api/createGame/',
 			requestBody
 		);
 
@@ -23,12 +25,12 @@ angular.module("tictactoeApp").controller("tictactoeController", function($scope
 	$scope.joinGame = function(){
 		var requestBody = {
 			gameId: $scope.gameId,
-			commandName: "JoinGame",
+			commandName: 'JoinGame',
 			userName: $scope.userName,
-			timeStamp: "2014-12-02T11:29:29"
+			timeStamp: '2014-12-02T11:29:29'
 		};
 
-		var requestPromise = $http.post("/api/joinGame/",
+		var requestPromise = $http.post('/api/joinGame/',
 			requestBody
 		);
 
@@ -40,16 +42,16 @@ angular.module("tictactoeApp").controller("tictactoeController", function($scope
 	$scope.makeMove = function(x, y){
 		var requestBody = {
 			gameId: $scope.gameId,
-			commandName: "MakeMove",
+			commandName: 'MakeMove',
 			userName: $scope.userName,
-			timeStamp: "2014-12-02T11:29:29",
+			timeStamp: '2014-12-02T11:29:29',
 			cell: {
 				x: x,
 				y: y
 			}
 		};
 
-		var requestPromise = $http.post("/api/makeMove/",
+		var requestPromise = $http.post('/api/makeMove/',
 			requestBody
 		);
 

@@ -1,7 +1,9 @@
-describe("Directive: tictactoe", function(){
+'use strict';
+
+describe('Directive: tictactoe', function(){
 	//Set up everything for the tests
 
-	beforeEach(module("tictactoeApp"));
+	beforeEach(module('tictactoeApp'));
 
 	var element, scope;
 

@@ -33,8 +33,8 @@ module.exports = function(history){
 	tictactoeState.createdBy = function(userName){
 		var returnValue = false;
 		_.each(history, function(currentEvent){
-			if(currentEvent.eventName === "GameCreated"
-				&& currentEvent.userName === userName){
+			if(	currentEvent.eventName === "GameCreated" &&
+				currentEvent.userName === userName){
 				returnValue = true;
 			}
 		});
@@ -79,9 +79,9 @@ module.exports = function(history){
 	}
 
 	tictactoeState.canMakeMove = function(cell){
-		if(tictactoeState.status.status === "Unresolved"
-			&& tictactoeState.grid[cell.x][cell.y] === ""
-			&& tictactoeState.insideGrid(cell)){
+		if(	tictactoeState.status.status === "Unresolved" &&
+			tictactoeState.grid[cell.x][cell.y] === "" &&
+			tictactoeState.insideGrid(cell)){
 			console.log("Status.status: " + tictactoeState.status.status);
 			console.log("grid[x][y]: " + tictactoeState.grid[cell.x][cell.y]);
 			console.log("insideGrid: " + tictactoeState.insideGrid(cell));
@@ -101,10 +101,10 @@ module.exports = function(history){
 
 	tictactoeState.updateStatus = function(theEvent){
 		var win = false;
-		win |= tictactoeState.winOnLineVertical(theEvent.cell.x);
-		win |= tictactoeState.winOnLineHorizontal(theEvent.cell.y);
-		win |= tictactoeState.winOnLineDiagonalDown();
-		win |= tictactoeState.winOnLineDiagonalUp();
+		win = win || tictactoeState.winOnLineVertical(theEvent.cell.x);
+		win = win || tictactoeState.winOnLineHorizontal(theEvent.cell.y);
+		win = win || tictactoeState.winOnLineDiagonalDown();
+		win = win || tictactoeState.winOnLineDiagonalUp();
 
 		if(win){
 			tictactoeState.status = {
@@ -128,7 +128,7 @@ module.exports = function(history){
 		if(theEvent instanceof Array){
 			var rc = 0;
 			_.each(theEvent, function(currentEvent){
-				rc |= tictactoeState.updateGrid(currentEvent);
+				rc = rc || tictactoeState.updateGrid(currentEvent);
 			});
 			return rc;
 		}
@@ -143,9 +143,9 @@ module.exports = function(history){
 				return 0;
 			}
 			else if(theEvent.eventName === "MoveMade"){
-				if(tictactoeState.insideGrid(theEvent.cell)
-					&& tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] === ""
-					&& tictactoeState.status.status === "Unresolved"){
+				if(	tictactoeState.insideGrid(theEvent.cell) &&
+					tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] === "" &&
+					tictactoeState.status.status === "Unresolved"){
 					if(theEvent.userName === tictactoeState.players[0]){
 						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "x";
 						tictactoeState.updateStatus(theEvent);

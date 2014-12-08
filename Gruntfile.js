@@ -55,6 +55,10 @@ module.exports = function (grunt) {
       }
     },
     watch: {
+      jshint: {
+        files: ['server/**/*.js'],
+        tasks: ['jshint']
+      },
       injectJS: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.js',

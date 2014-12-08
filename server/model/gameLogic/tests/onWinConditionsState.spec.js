@@ -233,13 +233,13 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		history.push(extraEvent);
 
-		var gridAfter = [
+		gridAfter = [
 		["x","o",""],
 		["x","o",""],
 		["x","",""]
 		];
 
-		var gameStatusAfter = {
+		gameStatusAfter = {
 			status: "Win",
 			userName: "Gvendurst"
 		};
@@ -265,13 +265,13 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		history.push(extraEvent);
 
-		var gridAfter = [
+		gridAfter = [
 		["x","o",""],
 		["x","o",""],
 		["x","",""]
 		];
 
-		var gameStatusAfter = {
+		gameStatusAfter = {
 			status: "Win",
 			userName: "Gvendurst"
 		};
@@ -366,13 +366,13 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		history.push(extraEvent);
 
-		var gridAfter = [
+		gridAfter = [
 		["x","x","x"],
 		["o","o",""],
 		["","",""]
 		];
 
-		var gameStatusAfter = {
+		gameStatusAfter = {
 			status: "Win",
 			userName: "Gvendurst"
 		};
@@ -398,13 +398,13 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		history.push(extraEvent);
 
-		var gridAfter = [
+		gridAfter = [
 		["x","x","x"],
 		["o","o",""],
 		["","",""]
 		];
 
-		var gameStatusAfter = {
+		gameStatusAfter = {
 			status: "Win",
 			userName: "Gvendurst"
 		};
@@ -499,13 +499,13 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		history.push(extraEvent);
 
-		var gridAfter = [
+		gridAfter = [
 		["x","","o"],
 		["","x",""],
 		["o","","x"]
 		];
 
-		var gameStatusAfter = {
+		gameStatusAfter = {
 			status: "Win",
 			userName: "Gvendurst"
 		};
@@ -531,13 +531,13 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		history.push(extraEvent);
 
-		var gridAfter = [
+		gridAfter = [
 		["x","","o"],
 		["","x",""],
 		["o","","x"]
 		];
 
-		var gameStatusAfter = {
+		gameStatusAfter = {
 			status: "Win",
 			userName: "Gvendurst"
 		};

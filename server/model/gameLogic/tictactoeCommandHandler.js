@@ -1,3 +1,5 @@
+var _ = require("lodash");
+
 //TODO: Comment the code, and soon
 module.exports = function(history){
 	//TODO: Add a function that checks if history contains certain events. Use instead of f.ex. history.length === 0
@@ -37,10 +39,11 @@ module.exports = function(history){
 		
 		var handler = {
 			"CreateGame": function(theCommand){
+				var resultEvents;
 				if(!commandHandler.containsEvent("GameCreated")){
 					if(!missingValue(theCommand.userName) &&
 						!missingValue(theCommand.gameId)){
-						var resultEvents = [
+						resultEvents = [
 						{
 							eventName: "GameCreated",
 							userName: theCommand.userName,
@@ -50,14 +53,14 @@ module.exports = function(history){
 						return resultEvents;
 					}
 					else{
-						var resultEvents = [
+						resultEvents = [
 							badCommand("Some fields are missing", theCommand, history)
 						];
 						return resultEvents;	
 					}
 				}
 				else{
-					var resultEvents = [
+					resultEvents = [
 						badCommand("Game has already been created", theCommand, history)
 					];
 					return resultEvents;
@@ -65,8 +68,9 @@ module.exports = function(history){
 			},
 
 			"JoinGame": function(theCommand){
+				var resultEvents;
 				if(!commandHandler.containsEvent("GameCreated")){
-					var resultEvents = [
+					resultEvents = [
 						badCommand("Game has not been created", theCommand, history)
 					];
 					return resultEvents;
@@ -74,9 +78,9 @@ module.exports = function(history){
 				else{
 					if(gameState.joinable() === true){
 						if(!gameState.createdBy(theCommand.userName)){
-							if(!missingValue(theCommand.gameId)
-								&& !missingValue(theCommand.userName)){
-								var resultEvents = [
+							if(	!missingValue(theCommand.gameId) &&
+								!missingValue(theCommand.userName)){
+								resultEvents = [
 								{
 									eventName: "GameJoined",
 									userName: theCommand.userName,
@@ -86,21 +90,21 @@ module.exports = function(history){
 								return resultEvents;
 							}
 							else{
-								var resultEvents = [
+								resultEvents = [
 									badCommand("Some fields are missing", theCommand, history)
 								];
 								return resultEvents;
 							}
 						}
 						else{
-							var resultEvents = [
+							resultEvents = [
 								badCommand("This user created the game", theCommand, history)
 							];
 							return resultEvents;
 						}
 					}
 					else{
-						var resultEvents = [
+						resultEvents = [
 							badCommand("Game is full", theCommand, history)
 						];
 						return resultEvents;
@@ -110,25 +114,26 @@ module.exports = function(history){
 
 			//TODO: Should this check for a legal move and game won?
 			"MakeMove": function(theCommand){
+				var resultEvents;
 				if(!commandHandler.containsEvent("GameCreated")){
-					var resultEvents = [
+					resultEvents = [
 						badCommand("Game has not been created", theCommand, history)
 					];
 					return resultEvents;
 				}
 				else if(!commandHandler.containsEvent("GameJoined")){
-					var resultEvents = [
+					resultEvents = [
 						badCommand("Game has not been joined", theCommand, history)
 					];
 					return resultEvents;
 				}
 				else{
-					if(!missingValue(theCommand.userName)
-						&& !missingValue(theCommand.gameId)
-						&& !missingValue(theCommand.cell)){
+					if(	!missingValue(theCommand.userName) &&
+						!missingValue(theCommand.gameId) &&
+						!missingValue(theCommand.cell)){
 						
 						if(gameState.canMakeMove(theCommand.cell)){
-							var resultEvents = [
+							resultEvents = [
 							{
 								eventName: "MoveMade",
 								userName: theCommand.userName,
@@ -139,14 +144,13 @@ module.exports = function(history){
 							return resultEvents;
 						}
 						else{
-							var resultEvents;
 							if(gameState.getStatus().status === "Unresolved"){
-								var resultEvents = [
+								resultEvents = [
 									badCommand("Illegal move", theCommand, history)
 								];
 							}
 							else{
-								var resultEvents = [
+								resultEvents = [
 									badCommand("Game is over", theCommand, history)
 								];
 							}
@@ -154,7 +158,7 @@ module.exports = function(history){
 						}
 					}
 					else{
-						var resultEvents = [
+						resultEvents = [
 							badCommand("Some fields are missing", theCommand, history)
 						];
 						return resultEvents;
