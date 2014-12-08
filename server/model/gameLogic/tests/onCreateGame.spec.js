@@ -32,6 +32,52 @@ describe("Create game:", function(){
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 	});
 
+	it("Given a history with only a BadCommand event, handleCommand should add a GameCreated event", function(){
+		//Arrange
+		var history = [{
+			commandName: "BadCommand",
+			command: {
+				commandName: "CreateGame",
+				gameId: "1"
+			},
+			history: [],
+			gameId: "1",
+			message: "Some fields is missing"
+		}];
+		
+		var when = {
+			commandName: "CreateGame",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		};
+		
+		var then = [
+		{
+			commandName: "BadCommand",
+			command: {
+				commandName: "CreateGame",
+				gameId: "1"
+			},
+			history: [],
+			gameId: "1",
+			message: "Some fields is missing"
+		},
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		}];
+
+		//Act
+		var result = tictactoeCommandHandler(history).handleCommand(when);
+
+		//Assert
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
+	});
+
 	it("A BadCommand event should be returned if gameId is missing", function(){
 		//Arrange
 		var history = [];

@@ -10,7 +10,7 @@ exports.handleCommand = function(req, res){
 	}
 
 	var eventStore = app.eventStore;
-	console.log("app.eventStore: " + JSON.stringify(eventStore));
+	
 	var boundedContext = tictactoeBoundedContext(eventStore, tictactoeCommandHandler);
 	var returnValue = boundedContext.handleCommand(req.body);
 	

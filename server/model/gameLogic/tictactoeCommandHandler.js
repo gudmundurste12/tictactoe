@@ -1,5 +1,7 @@
 //TODO: Comment the code, and soon
 module.exports = function(history){
+	//TODO: Add a function that checks if history contains certain events. Use instead of f.ex. history.length === 0
+
 	var tictactoeState = require('./tictactoeState');
 
 	var gameState = tictactoeState(history);
