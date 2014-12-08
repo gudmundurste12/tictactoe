@@ -25,7 +25,7 @@ describe("Memory store", function(){
 		}];
 
 		//Act
-		eventStore.setHistory("1",
+		eventStore.storeEvents("1",
 		[{
 			commandName: "CreateGame",
 			userName: "Gvendurst",
@@ -57,7 +57,7 @@ describe("Memory store", function(){
 		}];
 
 		//Act
-		eventStore.setHistory("1",
+		eventStore.storeEvents("1",
 		[{
 			commandName: "CreateGame",
 			userName: "Gvendurst",
@@ -65,7 +65,7 @@ describe("Memory store", function(){
 			timeStamp: "2014-12-02T11:29:29"
 		}]);
 		var result1 = eventStore.getHistory("1");
-		eventStore.setHistory("2",
+		eventStore.storeEvents("2",
 		[{
 			commandName: "CreateGame",
 			userName: "Gvendurst",

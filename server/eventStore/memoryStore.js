@@ -1,3 +1,5 @@
+_ = require("lodash");
+
 module.exports = function(){
 	var eventStore = {};
 
@@ -16,9 +18,9 @@ module.exports = function(){
 		}
 	};
 
-	eventStore.setHistory = function(gameId, history){
-		eventStore.store[gameId] = history;
+	eventStore.storeEvents = function(id, events){
+		eventStore.store[id] = (eventStore.store[id] || []).concat(events);
 	};
-
+	
 	return eventStore;
 }

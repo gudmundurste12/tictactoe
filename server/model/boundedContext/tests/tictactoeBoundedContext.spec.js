@@ -5,9 +5,13 @@ describe("BoundedContext", function(){
 	it("Events should be loaded into a command handler and a command should be executed", function(){
 		//Arrange
 		var eventStoreCalledWithId = undefined;
+		var storeEventsCalledWithId = undefined;
 		var eventStoreStub = {
 			getHistory: function(id){
 				eventStoreCalledWithId = id;
+			},
+			storeEvents: function(id){
+				storeEventsCalledWithId = id;
 			}
 		};
 
@@ -32,6 +36,7 @@ describe("BoundedContext", function(){
 
 		//Assert
 		should(eventStoreCalledWithId).be.exactly("1");
+		should(storeEventsCalledWithId).be.exactly("1");
 		should(commandHandlerCalledWithCommand).eql(testCommand);
 	});
 });
