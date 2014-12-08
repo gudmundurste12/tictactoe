@@ -1,3 +1,5 @@
+/*global afterEach:false */
+
 'use strict';
 
 describe('Controller: tictactoeController', function(){

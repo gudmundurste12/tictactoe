@@ -5,7 +5,7 @@ describe('Directive: tictactoe', function(){
 
 	beforeEach(module('tictactoeApp'));
 
-	var element, scope;
+	var scope;
 
 	beforeEach(inject(function($rootScope){
 		scope = $rootScope.$new();
