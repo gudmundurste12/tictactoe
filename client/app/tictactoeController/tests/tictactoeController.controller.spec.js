@@ -43,4 +43,29 @@ describe("Controller: tictactoeController", function(){
 		expect(scope.events.length).toBe(1);
 		expect(scope.events[0]).toEqual({value: "TestValue"});
 	});
+
+
+	it("The list of events should be updated on JoinGame", function(){
+		httpBackend.expectPOST("/api/joinGame/",
+		{
+			gameId: "1",
+			commandName: "JoinGame",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:29:29"
+		}).respond(
+		{
+			response: [
+				{value: "TestValue"}
+			]
+		});
+
+		scope.gameId = "1";
+		scope.userName = "Gvendurst";
+
+		scope.joinGame();
+		httpBackend.flush();
+
+		expect(scope.events.length).toBe(1);
+		expect(scope.events[0]).toEqual({value: "TestValue"});
+	});
 });

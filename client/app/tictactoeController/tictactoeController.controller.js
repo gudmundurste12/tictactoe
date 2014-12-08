@@ -19,4 +19,21 @@ angular.module("tictactoeApp").controller("tictactoeController", function($scope
 			$scope.updateEvents(data.data.response);
 		});
 	};
+
+	$scope.joinGame = function(){
+		var requestBody = {
+			gameId: $scope.gameId,
+			commandName: "JoinGame",
+			userName: $scope.userName,
+			timeStamp: "2014-12-02T11:29:29"
+		};
+
+		var requestPromise = $http.post("/api/joinGame/",
+			requestBody
+		);
+
+		requestPromise.then(function(data){
+			$scope.updateEvents(data.data.response);
+		});
+	};
 });
