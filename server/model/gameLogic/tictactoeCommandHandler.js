@@ -65,7 +65,7 @@ module.exports = function(history){
 			},
 
 			"JoinGame": function(theCommand){
-				if(history.length === 0){
+				if(!commandHandler.containsEvent("GameCreated")){
 					var resultEvents = [
 						badCommand("Game has not been created", theCommand, history)
 					];
@@ -110,13 +110,13 @@ module.exports = function(history){
 
 			//TODO: Should this check for a legal move and game won?
 			"MakeMove": function(theCommand){
-				if(history.length === 0){
+				if(!commandHandler.containsEvent("GameCreated")){
 					var resultEvents = [
 						badCommand("Game has not been created", theCommand, history)
 					];
 					return resultEvents;
 				}
-				else if(history.length === 1){
+				else if(!commandHandler.containsEvent("GameJoined")){
 					var resultEvents = [
 						badCommand("Game has not been joined", theCommand, history)
 					];

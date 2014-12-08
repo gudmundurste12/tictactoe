@@ -266,4 +266,48 @@ describe("Join game: ", function(){
 		should(result.length).be.exactly(1);
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 	});
+
+	it("A game should be joinable if it has been created and not joined, even if the history contains BadCommands", function(){
+		//Arrange
+		var history = [
+		{
+			commandName: "BadCommand",
+			command: {
+				commandName: "CreateGame",
+				gameId: "1"
+			},
+			history: [],
+			gameId: "1",
+			message: "Some fields are missing"
+		},
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		}];
+
+		var when = {
+			commandName: "JoinGame",
+			userName: "Gvendurst2",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:34:29"
+		};
+
+		var then = [
+		{
+			eventName: "GameJoined",
+			userName: "Gvendurst2",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:34:29"
+		}];
+
+		//Act
+		var eventHandler = tictactoeCommandHandler(history);
+		var result = eventHandler.handleCommand(when);
+
+		//Assert
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
+	});
 });
