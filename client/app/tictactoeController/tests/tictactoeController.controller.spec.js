@@ -91,7 +91,7 @@ describe("Controller: tictactoeController", function(){
 		scope.gameId = "1";
 		scope.userName = "Gvendurst";
 
-		scope.makeMove();
+		scope.makeMove(1,1);
 		httpBackend.flush();
 
 		expect(scope.events.length).toBe(1);

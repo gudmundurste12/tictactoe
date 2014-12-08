@@ -36,4 +36,25 @@ angular.module("tictactoeApp").controller("tictactoeController", function($scope
 			$scope.updateEvents(data.data.response);
 		});
 	};
+
+	$scope.makeMove = function(x, y){
+		var requestBody = {
+			gameId: $scope.gameId,
+			commandName: "MakeMove",
+			userName: $scope.userName,
+			timeStamp: "2014-12-02T11:29:29",
+			cell: {
+				x: x,
+				y: y
+			}
+		};
+
+		var requestPromise = $http.post("/api/makeMove/",
+			requestBody
+		);
+
+		requestPromise.then(function(data){
+			$scope.updateEvents(data.data.response);
+		});
+	};
 });
