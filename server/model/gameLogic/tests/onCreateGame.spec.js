@@ -42,7 +42,7 @@ describe("Create game:", function(){
 			},
 			history: [],
 			gameId: "1",
-			message: "Some fields is missing"
+			message: "Some fields are missing"
 		}];
 		
 		var when = {
@@ -53,16 +53,6 @@ describe("Create game:", function(){
 		};
 		
 		var then = [
-		{
-			commandName: "BadCommand",
-			command: {
-				commandName: "CreateGame",
-				gameId: "1"
-			},
-			history: [],
-			gameId: "1",
-			message: "Some fields is missing"
-		},
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",

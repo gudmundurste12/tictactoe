@@ -22,11 +22,22 @@ module.exports = function(history){
 		}
 	};
 
+	commandHandler.containsEvent = function(eventName){
+		var returnValue = false;
+		_.each(history, function(currentEvent){
+			if(currentEvent.eventName === eventName){
+				returnValue = true;
+			}
+		});
+
+		return returnValue;
+	};
+
 	commandHandler.handleCommand = function(theCommand){
 		
 		var handler = {
 			"CreateGame": function(theCommand){
-				if(history.length === 0){
+				if(!commandHandler.containsEvent("GameCreated")){
 					if(!missingValue(theCommand.userName) &&
 						!missingValue(theCommand.gameId)){
 						var resultEvents = [
