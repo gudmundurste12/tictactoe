@@ -68,4 +68,33 @@ describe("Controller: tictactoeController", function(){
 		expect(scope.events.length).toBe(1);
 		expect(scope.events[0]).toEqual({value: "TestValue"});
 	});
+
+
+	it("The list of events should be updated on MakeMove", function(){
+		httpBackend.expectPOST("/api/makeMove/",
+		{
+			gameId: "1",
+			commandName: "MakeMove",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:29:29",
+			cell: {
+				x: 1,
+				y: 1
+			}
+		}).respond(
+		{
+			response: [
+				{value: "TestValue"}
+			]
+		});
+
+		scope.gameId = "1";
+		scope.userName = "Gvendurst";
+
+		scope.makeMove();
+		httpBackend.flush();
+
+		expect(scope.events.length).toBe(1);
+		expect(scope.events[0]).toEqual({value: "TestValue"});
+	});
 });

@@ -78,6 +78,23 @@ module.exports = function(history){
 		return returnValue;
 	}
 
+	tictactoeState.canMakeMove = function(cell){
+		if(tictactoeState.status.status === "Unresolved"
+			&& tictactoeState.grid[cell.x][cell.y] === ""
+			&& tictactoeState.insideGrid(cell)){
+			console.log("Status.status: " + tictactoeState.status.status);
+			console.log("grid[x][y]: " + tictactoeState.grid[cell.x][cell.y]);
+			console.log("insideGrid: " + tictactoeState.insideGrid(cell));
+			return true;
+		}
+		else{
+			console.log("Status.status: " + tictactoeState.status.status);
+			console.log("grid[x][y]: " + tictactoeState.grid[cell.x][cell.y]);
+			console.log("insideGrid: " + tictactoeState.insideGrid(cell));
+			return false;
+		}
+	}
+
 	tictactoeState.getStatus = function(){
 		return tictactoeState.status;
 	};

@@ -126,15 +126,32 @@ module.exports = function(history){
 					if(!missingValue(theCommand.userName)
 						&& !missingValue(theCommand.gameId)
 						&& !missingValue(theCommand.cell)){
-						var resultEvents = [
-						{
-							eventName: "MoveMade",
-							userName: theCommand.userName,
-							gameId: theCommand.gameId,
-							timeStamp: theCommand.timeStamp,
-							cell: theCommand.cell
-						}];
-						return resultEvents;
+						
+						if(gameState.canMakeMove(theCommand.cell)){
+							var resultEvents = [
+							{
+								eventName: "MoveMade",
+								userName: theCommand.userName,
+								gameId: theCommand.gameId,
+								timeStamp: theCommand.timeStamp,
+								cell: theCommand.cell
+							}];
+							return resultEvents;
+						}
+						else{
+							var resultEvents;
+							if(gameState.getStatus().status === "Unresolved"){
+								var resultEvents = [
+									badCommand("Illegal move", theCommand, history)
+								];
+							}
+							else{
+								var resultEvents = [
+									badCommand("Game is over", theCommand, history)
+								];
+							}
+							return resultEvents;
+						}
 					}
 					else{
 						var resultEvents = [

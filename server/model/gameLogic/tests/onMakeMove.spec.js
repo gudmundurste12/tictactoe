@@ -267,6 +267,95 @@ describe("Make move:", function(){
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 	});
 
+	/*
+	it("Illegal moves should return a BadCommand", function(){
+		//Arrange
+		var history = [
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:29:29"
+		},
+		{
+			eventName: "GameJoined",
+			userName: "Gvendurst2",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:34:29"
+		},
+		{
+			commandName: "MakeMove",
+			userName: "Gvendurst",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 1
+			}
+		}];
+
+		var when = {
+			commandName: "MakeMove",
+			userName: "Gvendurst2",
+			gameId: "1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 1
+			}
+		};
+
+		var then = [
+		{
+			eventName: "BadCommand",
+			command:
+			{
+				commandName: "MakeMove",
+				userName: "Gvendurst2",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:39:29",
+				cell: {
+					x: 1,
+					y: 1
+				}
+			},
+			history: [
+			{
+				eventName: "GameCreated",
+				userName: "Gvendurst",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:29:29"
+			},
+			{
+				eventName: "GameJoined",
+				userName: "Gvendurst2",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:34:29"
+			},
+			{
+				commandName: "MakeMove",
+				userName: "Gvendurst",
+				gameId: "1",
+				timeStamp: "2014-12-02T11:39:29",
+				cell: {
+					x: 1,
+					y: 1
+				}
+			}],
+			gameId: "1",
+			message: "Illegal move"
+		}];
+
+		//Act
+		var eventHandler = tictactoeCommandHandler(history);
+		var result = eventHandler.handleCommand(when);
+
+		//Assert
+		should(result.length).be.exactly(1);
+		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
+	});
+	*/
+
 
 	it("Should return a MoveMade event", function(){
 		//Arrange
