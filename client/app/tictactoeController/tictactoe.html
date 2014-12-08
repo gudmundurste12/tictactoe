@@ -1,5 +1,5 @@
 <div>THIS IS THE HTML</div>
-<div ng-controller="TictactoeController">
+<div ng-controller="tictactoeController">
 	<label for="name">Name</label>
 	<input id="name" ng-model="name">
 	
@@ -8,5 +8,30 @@
 	<div>
 		{{name}}
 		<button ng-click="createGame()">Create Game</button>
+		<button ng-click="testButton()">Test
+		</button>
+	</div>
+
+
+	<div>
+		<table>
+		<tr ng-repeat='row in grid'>
+			<td>
+				<button ng-click='cellClicked($index, 0)'>
+					{{row[0]}}
+				</button>
+			</td>
+			<td>
+				<button ng-click='cellClicked($index, 1)'>
+					{{row[1]}}
+				</button>
+			</td>
+			<td>
+				<button ng-click='cellClicked($index, 2)'>
+					{{row[2]}}
+				</button>
+			</td>
+		</tr>
+		</table>
 	</div>
 </div>

@@ -1,6 +1,12 @@
 'use strict';
 
 angular.module('tictactoeApp').controller('tictactoeController', function($scope, $http){
+	$scope.grid = [
+		['','',''],
+		['','',''],
+		['','','']
+	];
+
 	$scope.updateEvents = function(events){
 		$scope.events = events;
 	};
@@ -58,5 +64,9 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		requestPromise.then(function(data){
 			$scope.updateEvents(data.data.response);
 		});
+	};
+
+	$scope.cellClicked = function(x, y){
+		console.log("x: " + x + ", y: " + y);
 	};
 });
