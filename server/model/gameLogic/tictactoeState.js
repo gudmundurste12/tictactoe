@@ -80,7 +80,7 @@ module.exports = function(history){
 
 	tictactoeState.canMakeMove = function(cell){
 		if(	tictactoeState.status.status === "Unresolved" &&
-			tictactoeState.grid[cell.x][cell.y] === "" &&
+			tictactoeState.grid[cell.y][cell.x] === "" &&
 			tictactoeState.insideGrid(cell)){
 			console.log("Status.status: " + tictactoeState.status.status);
 			console.log("grid[x][y]: " + tictactoeState.grid[cell.x][cell.y]);

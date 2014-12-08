@@ -8,15 +8,30 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	];
 
 	$scope.updateEvents = function(events){
-		$scope.events = events;
+		if(!$scope.events){
+			$scope.events = [];
+		}
+		for(var i = 0; i < events.length; i++){
+			$scope.events.push(events[i]);
+		}
+
+		$scope.updateGrid(events);
+	};
+
+	$scope.updateGrid = function(events){
+		for(var i = 0; i < events.length; i++){
+			if(events[i].eventName === 'MoveMade'){
+				$scope.grid[events[i].cell.y][events[i].cell.x] = $scope.userName;
+			}
+		}
 	};
 
 	$scope.createGame = function(){
 		var requestBody = {
-			gameId: $scope.gameId,
-			commandName: 'CreateGame',
-			userName: $scope.userName,
-			timeStamp: '2014-12-02T11:29:29'
+			'gameId': $scope.gameId,
+			'commandName': 'CreateGame',
+			'userName': $scope.userName,
+			'timeStamp': '2014-12-02T11:29:29'
 		};
 
 		var requestPromise = $http.post('/api/createGame/',
@@ -24,16 +39,16 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.updateEvents(data.data.response);
+			$scope.updateEvents(data.data);
 		});
 	};
 
 	$scope.joinGame = function(){
 		var requestBody = {
-			gameId: $scope.gameId,
-			commandName: 'JoinGame',
-			userName: $scope.userName,
-			timeStamp: '2014-12-02T11:29:29'
+			'gameId': $scope.gameId,
+			'commandName': 'JoinGame',
+			'userName': $scope.userName,
+			'timeStamp': '2014-12-02T11:29:29'
 		};
 
 		var requestPromise = $http.post('/api/joinGame/',
@@ -41,17 +56,18 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.updateEvents(data.data.response);
+			$scope.updateEvents(data.data);
 		});
 	};
 
 	$scope.makeMove = function(x, y){
+		console.log("x: " + x + ", y: " + y);
 		var requestBody = {
-			gameId: $scope.gameId,
-			commandName: 'MakeMove',
-			userName: $scope.userName,
-			timeStamp: '2014-12-02T11:29:29',
-			cell: {
+			'gameId': $scope.gameId,
+			'commandName': 'MakeMove',
+			'userName': $scope.userName,
+			'timeStamp': '2014-12-02T11:29:29',
+			'cell': {
 				x: x,
 				y: y
 			}
@@ -62,11 +78,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.updateEvents(data.data.response);
+			$scope.updateEvents(data.data);
 		});
-	};
-
-	$scope.cellClicked = function(x, y){
-		console.log("x: " + x + ", y: " + y);
 	};
 });

@@ -1,15 +1,14 @@
 <div>THIS IS THE HTML</div>
 <div ng-controller="tictactoeController">
-	<label for="name">Name</label>
-	<input id="name" ng-model="name">
+	<label for="gameId">Name</label>
+	<input id="gameId" ng-model="gameId">
 	
 	<label for="userName">UserName</label>
 	<input id="userName" ng-model="userName">
 	<div>
 		{{name}}
 		<button ng-click="createGame()">Create Game</button>
-		<button ng-click="testButton()">Test
-		</button>
+		<button ng-click="joinGame()">Join Game</button>
 	</div>
 
 
@@ -17,21 +16,32 @@
 		<table>
 		<tr ng-repeat='row in grid'>
 			<td>
-				<button ng-click='cellClicked($index, 0)'>
+				<button ng-click='makeMove(0, $index)'>
 					{{row[0]}}
 				</button>
 			</td>
 			<td>
-				<button ng-click='cellClicked($index, 1)'>
+				<button ng-click='makeMove(1, $index)'>
 					{{row[1]}}
 				</button>
 			</td>
 			<td>
-				<button ng-click='cellClicked($index, 2)'>
+				<button ng-click='makeMove(2, $index)'>
 					{{row[2]}}
 				</button>
 			</td>
 		</tr>
 		</table>
 	</div>
+
+
+	<h2>Events</h2>
+	<ul>
+	<li ng-repeat='event in events track by $index'>
+		<p>{{event.eventName}}</p>
+		<p>{{event.cell}}</p>
+		<p>{{event.message}}</p>
+		<p>{{event.command.cell}}</p>
+	</li>
+	</ul>
 </div>
