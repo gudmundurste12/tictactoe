@@ -1,4 +1,4 @@
-_ = require("lodash");
+var _ = require("lodash");
 
 module.exports = function(){
 	var eventStore = {};
