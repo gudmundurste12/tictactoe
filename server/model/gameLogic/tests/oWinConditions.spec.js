@@ -27,7 +27,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 1
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -37,7 +38,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 0
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -47,7 +49,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 2
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -57,7 +60,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 2,
 				y: 0
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -67,7 +71,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 0
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -77,7 +82,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 2
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -87,7 +93,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 2,
 				y: 2
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -97,7 +104,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 1
-			}
+			},
+			token: "o"
 		}];
 		
 		var when = {
@@ -120,7 +128,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 2,
 				y: 1
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "GameDraw",
@@ -159,7 +168,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 0
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -169,7 +179,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 0
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -179,7 +190,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 1
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -189,7 +201,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 1
-			}
+			},
+			token: "o"
 		}];
 
 		var when = {
@@ -212,7 +225,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 2
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "GameWon",
@@ -247,7 +261,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 0
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -257,7 +272,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 0
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -267,7 +283,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 1
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -277,7 +294,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 1
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -287,7 +305,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 2
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "GameWon",
@@ -343,7 +362,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 0
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -353,7 +373,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 0
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -363,7 +384,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 1
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "MoveMade",
@@ -373,7 +395,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 1,
 				y: 1
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: "MoveMade",
@@ -383,7 +406,8 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			cell: {
 				x: 0,
 				y: 2
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: "GameWon",

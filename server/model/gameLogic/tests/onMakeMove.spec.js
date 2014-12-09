@@ -524,7 +524,8 @@ describe("Make move:", function(){
 			cell: {
 				x: 1,
 				y: 1
-			}
+			},
+			token: "x"
 		}];
 
 		//Act

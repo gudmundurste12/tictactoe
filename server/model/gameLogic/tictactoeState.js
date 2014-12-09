@@ -41,6 +41,18 @@ module.exports = function(history){
 		return returnValue;
 	}	
 
+	tictactoeState.getToken = function(userName){
+		if(userName === tictactoeState.players[0]){
+			return 'x';
+		}
+		else if(userName === tictactoeState.players[1]){
+			return 'o';
+		}
+		else{
+			throw Error('This player is not in the game');
+		}
+	};
+
 	tictactoeState.insideGrid = function(cell){
 		return cell.x < 3 && cell.x >=  0 && cell.y < 3 && cell.y >=  0;
 	};

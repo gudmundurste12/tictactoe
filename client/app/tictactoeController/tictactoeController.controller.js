@@ -23,7 +23,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	$scope.updateGrid = function(newEvents){
 		for(var i = 0; i < newEvents.length; i++){
 			if(newEvents[i].eventName === 'MoveMade'){
-				$scope.grid[newEvents[i].cell.y][newEvents[i].cell.x] = newEvents[i].userName;
+				$scope.grid[newEvents[i].cell.y][newEvents[i].cell.x] = newEvents[i].token;
 			}
 		}
 	};

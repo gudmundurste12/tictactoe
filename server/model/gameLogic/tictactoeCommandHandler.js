@@ -133,14 +133,14 @@ module.exports = function(history){
 						!missingValue(theCommand.cell)){
 						
 						if(gameState.canMakeMove(theCommand.userName, theCommand.cell)){
-							//TODO: Add GameWon and GameDraw if applicable
 							resultEvents = [
 							{
 								eventName: "MoveMade",
 								userName: theCommand.userName,
 								gameId: theCommand.gameId,
 								timeStamp: theCommand.timeStamp,
-								cell: theCommand.cell
+								cell: theCommand.cell,
+								token: gameState.getToken(theCommand.userName)
 							}];
 
 							history.push(resultEvents[0]);

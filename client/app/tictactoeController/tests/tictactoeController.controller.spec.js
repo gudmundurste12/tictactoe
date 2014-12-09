@@ -208,7 +208,8 @@ describe('Controller: tictactoeController', function(){
 			cell: {
 				x: 1,
 				y: 1
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: 'MoveMade',
@@ -218,7 +219,8 @@ describe('Controller: tictactoeController', function(){
 			cell: {
 				x: 0,
 				y: 0
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: 'MoveMade',
@@ -228,7 +230,8 @@ describe('Controller: tictactoeController', function(){
 			cell: {
 				x: 2,
 				y: 2
-			}
+			},
+			token: "x"
 		},
 		{
 			eventName: 'MoveMade',
@@ -238,7 +241,8 @@ describe('Controller: tictactoeController', function(){
 			cell: {
 				x: 0,
 				y: 2
-			}
+			},
+			token: "o"
 		},
 		{
 			eventName: 'MoveMade',
@@ -248,7 +252,8 @@ describe('Controller: tictactoeController', function(){
 			cell: {
 				x: 2,
 				y: 0
-			}
+			},
+			token: "x"
 		}];
 
 		var expected = [
