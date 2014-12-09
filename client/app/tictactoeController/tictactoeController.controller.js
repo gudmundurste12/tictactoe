@@ -10,7 +10,6 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	$scope.events = [];
 
 	$scope.updateEvents = function(newEvents){
-		console.log("newEvents: " + JSON.stringify(newEvents));
 		for(var i = 0; i < newEvents.length; i++){
 			$scope.events.push(newEvents[i]);
 		}
@@ -78,7 +77,6 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			console.log("data: " + JSON.stringify(data));
 			$scope.updateEvents(data.data);
 		});
 	};

@@ -78,10 +78,11 @@ module.exports = function(history){
 		return returnValue;
 	}
 
-	tictactoeState.canMakeMove = function(cell){
+	tictactoeState.canMakeMove = function(userName, cell){
 		if(	tictactoeState.status.status === "Unresolved" &&
 			tictactoeState.grid[cell.y][cell.x] === "" &&
-			tictactoeState.insideGrid(cell)){
+			tictactoeState.insideGrid(cell) &&
+			tictactoeState.currentPlayer === userName){
 			return true;
 		}
 		else{
