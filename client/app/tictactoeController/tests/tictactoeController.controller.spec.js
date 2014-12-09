@@ -209,7 +209,7 @@ describe('Controller: tictactoeController', function(){
 				x: 1,
 				y: 1
 			},
-			token: "x"
+			token: 'x'
 		},
 		{
 			eventName: 'MoveMade',
@@ -220,7 +220,7 @@ describe('Controller: tictactoeController', function(){
 				x: 0,
 				y: 0
 			},
-			token: "o"
+			token: 'o'
 		},
 		{
 			eventName: 'MoveMade',
@@ -231,7 +231,7 @@ describe('Controller: tictactoeController', function(){
 				x: 2,
 				y: 2
 			},
-			token: "x"
+			token: 'x'
 		},
 		{
 			eventName: 'MoveMade',
@@ -242,7 +242,7 @@ describe('Controller: tictactoeController', function(){
 				x: 0,
 				y: 2
 			},
-			token: "o"
+			token: 'o'
 		},
 		{
 			eventName: 'MoveMade',
@@ -253,7 +253,7 @@ describe('Controller: tictactoeController', function(){
 				x: 2,
 				y: 0
 			},
-			token: "x"
+			token: 'x'
 		}];
 
 		var expected = [
