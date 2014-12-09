@@ -147,7 +147,6 @@ module.exports = function(history){
 							gameState.setHistory(resultEvents);
 
 							var theStatus = gameState.getStatus();
-							console.log("status: " + theStatus.status);
 							if(theStatus.status === "Draw"){
 								resultEvents.push({
 									eventName: "GameDraw",

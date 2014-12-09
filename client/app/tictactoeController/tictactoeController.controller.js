@@ -17,7 +17,13 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	$scope.updateEvents = function(newEvents){
 		for(var i = 0; i < newEvents.length; i++){
 			$scope.events.push(newEvents[i]);
-		}
+			if(newEvents[i].eventName === 'GameWon'){
+				$scope.gameMessage = $scope.userName + ' won';
+			}
+			else if(newEvents[i].eventName === 'GameDraw'){
+				$scope.gameMessage = 'We have a tie';
+			}
+		}				
 	};
 
 	$scope.updateGrid = function(newEvents){
