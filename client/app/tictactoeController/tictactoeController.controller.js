@@ -9,13 +9,15 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 
 	$scope.events = [];
 
+	$scope.update = function(newEvents){
+		$scope.updateEvents(newEvents);
+		$scope.updateGrid(newEvents);
+	};
+
 	$scope.updateEvents = function(newEvents){
 		for(var i = 0; i < newEvents.length; i++){
 			$scope.events.push(newEvents[i]);
 		}
-		
-
-		$scope.updateGrid(newEvents);
 	};
 
 	$scope.updateGrid = function(newEvents){
@@ -39,7 +41,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.updateEvents(data.data);
+			$scope.update(data.data);
 		});
 	};
 
@@ -56,7 +58,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.updateEvents(data.data);
+			$scope.update(data.data);
 		});
 	};
 
@@ -77,7 +79,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.updateEvents(data.data);
+			$scope.update(data.data);
 		});
 	};
 });

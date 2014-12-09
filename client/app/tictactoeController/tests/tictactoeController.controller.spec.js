@@ -95,4 +95,174 @@ describe('Controller: tictactoeController', function(){
 		expect(scope.events.length).toBe(1);
 		expect(scope.events[0]).toEqual({value: 'TestValue'});
 	});
+
+	it('The events list should be updated correctly in updateEvents when the events list is empty', function(){
+		var history = [
+		{
+			eventName: 'GameCreated',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:29:29'
+		},
+		{
+			eventName: 'GameJoined',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:34:29'
+		},
+		{
+			commandName: 'MakeMove',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 1,
+				y: 1
+			}
+		}];
+
+		scope.events = [];
+		scope.updateEvents(history);
+
+		expect(scope.events).toEqual(history);
+	});
+
+
+	it('The events list should be updated correctly in updateEvents when the events list is empty', function(){
+		var history = [
+		{
+			eventName: 'GameCreated',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:29:29'
+		}];
+
+		var added = [
+		{
+			eventName: 'GameJoined',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:34:29'
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 1,
+				y: 1
+			}
+		}];
+
+		var expected = [
+		{
+			eventName: 'GameCreated',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:29:29'
+		},
+		{
+			eventName: 'GameJoined',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:34:29'
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 1,
+				y: 1
+			}
+		}];
+
+		scope.events = history;
+		scope.updateEvents(added);
+
+		expect(scope.events).toEqual(expected);
+	});
+
+
+	it('The grid should be updated correctly on makeMove', function(){
+		var history = [
+		{
+			eventName: 'GameCreated',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:29:29'
+		},
+		{
+			eventName: 'GameJoined',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:34:29'
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 1,
+				y: 1
+			}
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 2,
+				y: 2
+			}
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 0,
+				y: 2
+			}
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 2,
+				y: 0
+			}
+		}];
+
+		var expected = [
+		['o','','x'],
+		['','x',''],
+		['o','','x']];
+
+		scope.grid = [
+		['','',''],
+		['','',''],
+		['','','']];
+
+		scope.updateGrid(history);
+
+		expect(scope.grid).toEqual(expected);
+	});
 });

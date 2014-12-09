@@ -334,7 +334,7 @@ describe("Make move:", function(){
 	});
 
 
-		it("A BadCommand event should be returned if the users try to make moves in an incorrect order", function(){
+	it("A BadCommand event should be returned if the users try to make moves in an incorrect order", function(){
 		//Arrange
 		var history = [
 		{
