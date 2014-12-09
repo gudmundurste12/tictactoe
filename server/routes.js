@@ -13,6 +13,7 @@ module.exports = function(app) {
   app.use("/api/createGame", require("./api/tictactoeApi/createGame")(app).router);
   app.use("/api/joinGame", require("./api/tictactoeApi/joinGame")(app).router);
   app.use("/api/makeMove", require("./api/tictactoeApi/makeMove")(app).router);
+  app.use("/api/getEvents", require("./api/tictactoeApi/getEvents")(app).router);
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

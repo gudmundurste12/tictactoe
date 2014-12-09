@@ -16,3 +16,13 @@ exports.handleCommand = function(req, res){
 	
 	res.json(returnValue);
 };
+
+exports.getEvents = function(req, res){
+	if(!app.eventStore){
+		app.eventStore = require("../../eventStore/memoryStore")();
+	}
+
+	var eventStore = app.eventStore;
+
+	res.json(eventStore.getHistory(req.body.gameId));
+};
