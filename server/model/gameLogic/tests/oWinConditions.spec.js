@@ -3,23 +3,26 @@ var should = require('should');
 var tictactoeCommandHandler = require('../tictactoeCommandHandler');
 var tictactoeState = require('../tictactoeState');
 
-describe("tictactoeState on Win or Draw:", function(){
+describe("tictactoeCommandHandler on Win or Draw:", function(){
 	it("The game should end in a draw when all the cells are full and there is no winning player", function(){
 		//Arrange
 		var history = [
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:29:29"
 		},
 		{
 			eventName: "GameJoined",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:34:29"
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -29,6 +32,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -38,6 +42,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -47,6 +52,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 2,
@@ -56,6 +62,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -65,6 +72,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -74,6 +82,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 2,
@@ -83,6 +92,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -93,6 +103,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		var when = {
 			commandName: "MakeMove",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 2,
@@ -102,90 +113,9 @@ describe("tictactoeState on Win or Draw:", function(){
 
 		var then = [
 		{
-			eventName: "GameCreated",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:29:29"
-		},
-		{
-			eventName: "GameJoined",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:34:29"
-		},
-		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 2
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 0
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 0
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 2
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 2
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 1
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 2,
@@ -194,6 +124,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		},
 		{
 			eventName: "GameDraw",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29"
 		}];
 
@@ -211,16 +142,19 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "GameCreated",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:29:29"
 		},
 		{
 			eventName: "GameJoined",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:34:29"
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -230,6 +164,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -239,6 +174,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -248,6 +184,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -258,6 +195,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		var when = {
 			commandName: "MakeMove",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -267,54 +205,9 @@ describe("tictactoeState on Win or Draw:", function(){
 		
 		var then = 	[
 		{
-			eventName: "GameCreated",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:29:29"
-		},
-		{
-			eventName: "GameJoined",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:34:29"
-		},
-		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 0
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 1
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst2",
-			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			}
-		},
-		{
-			eventName: "MoveMade",
-			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 0,
@@ -323,6 +216,7 @@ describe("tictactoeState on Win or Draw:", function(){
 		},
 		{
 			eventName: "GameWon",
+			gameId:"1",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29"
 		}];	
@@ -332,11 +226,80 @@ describe("tictactoeState on Win or Draw:", function(){
 		//Assert
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 
-		history = then;
+		history = [
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:29:29"
+		},
+		{
+			eventName: "GameJoined",
+			userName: "Gvendurst2",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:34:29"
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst2",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 0
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 1
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst2",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 1
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 2
+			}
+		},
+		{
+			eventName: "GameWon",
+			gameId:"1",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:39:29"
+		}];
 
 		var extraCommand = {
-			commandName: "MoveMade",
+			commandName: "MakeMove",
 			userName: "Gvendurst2",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 1,
@@ -344,30 +307,103 @@ describe("tictactoeState on Win or Draw:", function(){
 			}
 		};
 
-		var extraEvent = {
+		then = [{
 			eventName: "BadCommand",
 			command: extraCommand,
 			history: history,
 			gameId: "1",
 			message: "Game is over"
-		};
+		}];
 
 
 		//Act
-		result = tictactoeCommandHandler(then).handleCommand(extraCommand);
-
-
-		then.push(extraEvent);
+		result = tictactoeCommandHandler(history).handleCommand(extraCommand);
 
 		//Assert
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));
 
-		history = then;
+		history = [
+		{
+			eventName: "GameCreated",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:29:29"
+		},
+		{
+			eventName: "GameJoined",
+			userName: "Gvendurst2",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:34:29"
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 0
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst2",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 0
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 1
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst2",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 1,
+				y: 1
+			}
+		},
+		{
+			eventName: "MoveMade",
+			userName: "Gvendurst",
+			gameId:"1",
+			timeStamp: "2014-12-02T11:39:29",
+			cell: {
+				x: 0,
+				y: 2
+			}
+		},
+		{
+			eventName: "GameWon",
+			gameId:"1",
+			userName: "Gvendurst",
+			timeStamp: "2014-12-02T11:39:29"
+		},
+		{
+			eventName: "BadCommand",
+			command: extraCommand,
+			history: history,
+			gameId: "1",
+			message: "Game is over"
+		}];
 
 		//Arrange
 		extraCommand = {
-			commandName: "MoveMade",
+			commandName: "MakeMove",
 			userName: "Gvendurst",
+			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
 			cell: {
 				x: 2,
@@ -375,22 +411,16 @@ describe("tictactoeState on Win or Draw:", function(){
 			}
 		};
 
-		extraEvent = {
+		then = [{
 			eventName: "BadCommand",
 			command: extraCommand,
 			history: history,
 			gameId: "1",
 			message: "Game is over"
-		};
-
-		history.push(extraEvent);
-
+		}];
 
 		//Act
-		result = tictactoeCommandHandler(then).handleCommand(extraCommand);
-
-
-		then.push(extraEvent);
+		result = tictactoeCommandHandler(history).handleCommand(extraCommand);
 
 		//Assert
 		should(JSON.stringify(result)).be.exactly(JSON.stringify(then));

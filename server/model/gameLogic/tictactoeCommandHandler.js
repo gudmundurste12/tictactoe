@@ -142,6 +142,28 @@ module.exports = function(history){
 								timeStamp: theCommand.timeStamp,
 								cell: theCommand.cell
 							}];
+
+							history.push(resultEvents[0]);
+							gameState.setHistory(resultEvents);
+
+							var theStatus = gameState.getStatus();
+							console.log("status: " + theStatus.status);
+							if(theStatus.status === "Draw"){
+								resultEvents.push({
+									eventName: "GameDraw",
+									gameId: theCommand.gameId,
+									timeStamp: theCommand.timeStamp
+								});
+							}
+							else if((theStatus.status === "Win")){
+								resultEvents.push({
+									eventName: "GameWon",
+									gameId: theCommand.gameId,
+									userName: theCommand.userName,
+									timeStamp: theCommand.timeStamp
+								});
+							}
+							
 							return resultEvents;
 						}
 						else{
