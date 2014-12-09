@@ -61,7 +61,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	};
 
 	$scope.makeMove = function(x, y){
-		console.log("x: " + x + ", y: " + y);
+		console.log('x: ' + x + ', y: ' + y);
 		var requestBody = {
 			'gameId': $scope.gameId,
 			'commandName': 'MakeMove',
