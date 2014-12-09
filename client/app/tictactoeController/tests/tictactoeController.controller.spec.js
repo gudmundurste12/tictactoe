@@ -32,11 +32,9 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			timeStamp: '2014-12-02T11:29:29'
 		}).respond(
-		{
-			response: [
-				{value: 'TestValue'}
-			]
-		});
+		[
+			{value: 'TestValue'}
+		]);
 
 		scope.gameId = '1';
 		scope.userName = 'Gvendurst';
@@ -57,11 +55,9 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			timeStamp: '2014-12-02T11:29:29'
 		}).respond(
-		{
-			response: [
-				{value: 'TestValue'}
-			]
-		});
+		[
+			{value: 'TestValue'}
+		]);
 
 		scope.gameId = '1';
 		scope.userName = 'Gvendurst';
@@ -86,11 +82,9 @@ describe('Controller: tictactoeController', function(){
 				y: 1
 			}
 		}).respond(
-		{
-			response: [
-				{value: 'TestValue'}
-			]
-		});
+		[
+			{value: 'TestValue'}
+		]);
 
 		scope.gameId = '1';
 		scope.userName = 'Gvendurst';

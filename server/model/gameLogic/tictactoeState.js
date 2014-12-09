@@ -82,15 +82,9 @@ module.exports = function(history){
 		if(	tictactoeState.status.status === "Unresolved" &&
 			tictactoeState.grid[cell.y][cell.x] === "" &&
 			tictactoeState.insideGrid(cell)){
-			console.log("Status.status: " + tictactoeState.status.status);
-			console.log("grid[x][y]: " + tictactoeState.grid[cell.x][cell.y]);
-			console.log("insideGrid: " + tictactoeState.insideGrid(cell));
 			return true;
 		}
 		else{
-			console.log("Status.status: " + tictactoeState.status.status);
-			console.log("grid[x][y]: " + tictactoeState.grid[cell.x][cell.y]);
-			console.log("insideGrid: " + tictactoeState.insideGrid(cell));
 			return false;
 		}
 	}

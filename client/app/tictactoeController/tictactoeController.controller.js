@@ -7,21 +7,22 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		['','','']
 	];
 
-	$scope.updateEvents = function(events){
-		if(!$scope.events){
-			$scope.events = [];
-		}
-		for(var i = 0; i < events.length; i++){
-			$scope.events.push(events[i]);
-		}
+	$scope.events = [];
 
-		$scope.updateGrid(events);
+	$scope.updateEvents = function(newEvents){
+		console.log("newEvents: " + JSON.stringify(newEvents));
+		for(var i = 0; i < newEvents.length; i++){
+			$scope.events.push(newEvents[i]);
+		}
+		
+
+		$scope.updateGrid(newEvents);
 	};
 
-	$scope.updateGrid = function(events){
-		for(var i = 0; i < events.length; i++){
-			if(events[i].eventName === 'MoveMade'){
-				$scope.grid[events[i].cell.y][events[i].cell.x] = $scope.userName;
+	$scope.updateGrid = function(newEvents){
+		for(var i = 0; i < newEvents.length; i++){
+			if(newEvents[i].eventName === 'MoveMade'){
+				$scope.grid[newEvents[i].cell.y][newEvents[i].cell.x] = newEvents[i].userName;
 			}
 		}
 	};
@@ -61,7 +62,6 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	};
 
 	$scope.makeMove = function(x, y){
-		console.log('x: ' + x + ', y: ' + y);
 		var requestBody = {
 			'gameId': $scope.gameId,
 			'commandName': 'MakeMove',
@@ -78,6 +78,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
+			console.log("data: " + JSON.stringify(data));
 			$scope.updateEvents(data.data);
 		});
 	};
