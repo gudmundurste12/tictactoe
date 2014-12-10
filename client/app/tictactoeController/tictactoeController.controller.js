@@ -1,37 +1,59 @@
 'use strict';
 
 angular.module('tictactoeApp').controller('tictactoeController', function($scope, $http){
+
 	$scope.grid = [
 		['','',''],
 		['','',''],
 		['','','']
 	];
 
+	$scope.gameMessage = "";
+
 	$scope.events = [];
 
-	$scope.update = function(newEvents){
-		$scope.updateEvents(newEvents);
-		$scope.updateGrid(newEvents);
+	$scope.inGame = false;
+
+	$scope.setHistory = function(newHistory){
+		$scope.events = newHistory;
 	};
 
-	$scope.updateEvents = function(newEvents){
-		for(var i = 0; i < newEvents.length; i++){
-			$scope.events.push(newEvents[i]);
-			if(newEvents[i].eventName === 'GameWon'){
-				$scope.gameMessage = $scope.userName + ' won';
-			}
-			else if(newEvents[i].eventName === 'GameDraw'){
-				$scope.gameMessage = 'We have a tie';
-			}
-		}				
-	};
+	$scope.setGrid = function(){
+		$scope.grid = [
+			['','',''],
+			['','',''],
+			['','','']
+		];
 
-	$scope.updateGrid = function(newEvents){
-		for(var i = 0; i < newEvents.length; i++){
-			if(newEvents[i].eventName === 'MoveMade'){
-				$scope.grid[newEvents[i].cell.y][newEvents[i].cell.x] = newEvents[i].token;
+		for(var i = 0; i < $scope.events.length; i++){
+			if($scope.events[i].eventName === 'MoveMade'){
+				$scope.grid[$scope.events[i].cell.y][$scope.events[i].cell.x] = $scope.events[i].token;
 			}
 		}
+	};
+
+	$scope.updateGameStatus = function(){
+		for(var i = 0; i < $scope.events.length; i++){
+			if ($scope.events[i].eventName === 'GameCreated' ||
+				$scope.events[i].eventName === 'GameJoined') {
+				
+				$scope.inGame = true;
+			}
+			else if($scope.events[i].eventName === 'GameWon'){
+				$scope.gameMessage = $scope.events[i].userName + ' won';
+				$scope.inGame = false;
+			}
+			else if($scope.events[i].eventName === 'GameDraw'){
+				$scope.gameMessage = 'We have a tie';
+				$scope.inGame = false;
+			}
+		}
+	};
+
+	$scope.update = function(newEvents){
+		$scope.setHistory(newEvents);
+		$scope.setGrid();
+		$scope.updateGameStatus();
 	};
 
 	$scope.createGame = function(){
@@ -47,7 +69,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.update(data.data);
+			//$scope.update(data.data);
 		});
 	};
 
@@ -64,7 +86,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.update(data.data);
+			//$scope.update(data.data);
 		});
 	};
 
@@ -85,7 +107,24 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		);
 
 		requestPromise.then(function(data){
-			$scope.update(data.data);
+			//$scope.update(data.data);
 		});
 	};
+
+	setInterval(function(){
+		console.log('interval');
+		if($scope.gameId){
+			var requestBody = {
+				'gameId': $scope.gameId
+			};
+
+			var requestPromise = $http.post('/api/getEvents/',
+				requestBody
+			);
+
+			requestPromise.then(function(data){
+				$scope.update(data.data);//update(data.data);
+			});
+		}
+	}, 2000);
 });

@@ -14,7 +14,7 @@
 	<h2>{{gameMessage}}</h2>
 
 
-	<div>
+	<div ng-show='inGame'>
 		<table>
 		<tr ng-repeat='row in grid'>
 			<td>
@@ -41,6 +41,7 @@
 	<ul>
 	<li ng-repeat='event in events track by $index'>
 		<p>{{event.eventName}}</p>
+		<p>{{event.userName}}</p>
 		<p>{{event.cell}}</p>
 		<p>{{event.message}}</p>
 		<p>{{event.command.cell}}</p>

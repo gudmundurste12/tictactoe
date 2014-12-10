@@ -24,7 +24,7 @@ describe('Controller: tictactoeController', function(){
 		httpBackend.verifyNoOutstandingRequest();
 	});
 
-	it('The list of events should be updated on CreateGame', function(){
+	it('The api should be called on CreateGame', function(){
 		httpBackend.expectPOST('/api/createGame/',
 		{
 			gameId: '1',
@@ -41,13 +41,10 @@ describe('Controller: tictactoeController', function(){
 
 		scope.createGame();
 		httpBackend.flush();
-
-		expect(scope.events.length).toBe(1);
-		expect(scope.events[0]).toEqual({value: 'TestValue'});
 	});
 
 
-	it('The list of events should be updated on JoinGame', function(){
+	it('The api should be called on JoinGame', function(){
 		httpBackend.expectPOST('/api/joinGame/',
 		{
 			gameId: '1',
@@ -64,13 +61,10 @@ describe('Controller: tictactoeController', function(){
 
 		scope.joinGame();
 		httpBackend.flush();
-
-		expect(scope.events.length).toBe(1);
-		expect(scope.events[0]).toEqual({value: 'TestValue'});
 	});
 
 
-	it('The list of events should be updated on MakeMove', function(){
+	it('The api should be called on MakeMove', function(){
 		httpBackend.expectPOST('/api/makeMove/',
 		{
 			gameId: '1',
@@ -91,9 +85,6 @@ describe('Controller: tictactoeController', function(){
 
 		scope.makeMove(1,1);
 		httpBackend.flush();
-
-		expect(scope.events.length).toBe(1);
-		expect(scope.events[0]).toEqual({value: 'TestValue'});
 	});
 
 	it('The events list should be updated correctly in updateEvents when the events list is empty', function(){
@@ -122,13 +113,13 @@ describe('Controller: tictactoeController', function(){
 		}];
 
 		scope.events = [];
-		scope.updateEvents(history);
+		scope.setHistory(history);
 
 		expect(scope.events).toEqual(history);
 	});
 
 
-	it('The events list should be updated correctly in updateEvents when the events list is empty', function(){
+	it('The events list should be updated correctly in updateEvents when the events list is not empty', function(){
 		var history = [
 		{
 			eventName: 'GameCreated',
@@ -179,14 +170,38 @@ describe('Controller: tictactoeController', function(){
 			}
 		}];
 
+		var historyPlusAdded = [
+		{
+			eventName: 'GameCreated',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:29:29'
+		},
+		{
+			eventName: 'GameJoined',
+			userName: 'Gvendurst2',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:34:29'
+		},
+		{
+			eventName: 'MoveMade',
+			userName: 'Gvendurst',
+			gameId: '1',
+			timeStamp: '2014-12-02T11:39:29',
+			cell: {
+				x: 1,
+				y: 1
+			}
+		}];
+
 		scope.events = history;
-		scope.updateEvents(added);
+		scope.setHistory(historyPlusAdded);
 
 		expect(scope.events).toEqual(expected);
 	});
 
 
-	it('The grid should be updated correctly on makeMove', function(){
+	it('The grid should be updated correctly in update()', function(){
 		var history = [
 		{
 			eventName: 'GameCreated',
@@ -266,8 +281,13 @@ describe('Controller: tictactoeController', function(){
 		['','',''],
 		['','','']];
 
-		scope.updateGrid(history);
+		expect(scope.inGame).toEqual(false);
+		expect(scope.gameMessage).toEqual('');
+
+		scope.update(history);
 
 		expect(scope.grid).toEqual(expected);
+		expect(scope.inGame).toEqual(true);
+		expect(scope.gameMessage).toEqual('');
 	});
 });
