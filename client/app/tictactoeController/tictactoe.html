@@ -6,15 +6,15 @@
 	<label for="userName">UserName</label>
 	<input id="userName" ng-model="userName">
 	<div>
-		<button ng-click="createGame()">Create Game</button>
-		<button ng-click="joinGame()">Join Game</button>
+		<button id="createGame" ng-click="createGame()">Create Game</button>
+		<button id="joinGame" ng-click="joinGame()">Join Game</button>
 	</div>
 
 
-	<h2>{{gameMessage}}</h2>
+	<h2 id="gameMessage">{{gameMessage}}</h2>
 
 
-	<div ng-show='inGame'>
+	<div id='tictactoeBoard' ng-show='inGame'>
 		<table>
 		<tr ng-repeat='row in grid track by $index' ng-init='x=$index'>
 			<td ng-repeat='cell in row track by $index' ng-init='y=$index'>
@@ -22,18 +22,6 @@
 					{{cell}}
 				</button>
 			</td>
-			<!--
-			<td>
-				<button ng-click='makeMove(1, $index)'>
-					{{row[1]}}
-				</button>
-			</td>
-			<td>
-				<button ng-click='makeMove(2, $index)'>
-					{{row[2]}}
-				</button>
-			</td>
-			-->
 		</tr>
 		</table>
 	</div>

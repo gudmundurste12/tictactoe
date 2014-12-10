@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('tictactoeApp').controller('tictactoeController', function($scope, $http){
+angular.module('tictactoeApp').controller('tictactoeController', function($scope, $http, $interval){
 
 	$scope.grid = [
 		['','',''],
@@ -108,7 +108,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		});
 	};
 
-	setInterval(function(){
+	$interval(function(){
 		console.log('interval');
 		if($scope.gameId){
 			var requestBody = {
@@ -123,5 +123,5 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 				$scope.update(data.data);//update(data.data);
 			});
 		}
-	}, 2000);
+	}, 1000);
 });
