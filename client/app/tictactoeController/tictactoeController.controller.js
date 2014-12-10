@@ -8,7 +8,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 		['','','']
 	];
 
-	$scope.gameMessage = "";
+	$scope.gameMessage = '';
 
 	$scope.events = [];
 
@@ -68,8 +68,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 			requestBody
 		);
 
-		requestPromise.then(function(data){
-			//$scope.update(data.data);
+		requestPromise.then(function(){
 		});
 	};
 
@@ -85,8 +84,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 			requestBody
 		);
 
-		requestPromise.then(function(data){
-			//$scope.update(data.data);
+		requestPromise.then(function(){
 		});
 	};
 
@@ -106,8 +104,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 			requestBody
 		);
 
-		requestPromise.then(function(data){
-			//$scope.update(data.data);
+		requestPromise.then(function(){
 		});
 	};
 

@@ -128,24 +128,6 @@ describe('Controller: tictactoeController', function(){
 			timeStamp: '2014-12-02T11:29:29'
 		}];
 
-		var added = [
-		{
-			eventName: 'GameJoined',
-			userName: 'Gvendurst2',
-			gameId: '1',
-			timeStamp: '2014-12-02T11:34:29'
-		},
-		{
-			eventName: 'MoveMade',
-			userName: 'Gvendurst',
-			gameId: '1',
-			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 1,
-				y: 1
-			}
-		}];
-
 		var expected = [
 		{
 			eventName: 'GameCreated',
@@ -170,7 +152,7 @@ describe('Controller: tictactoeController', function(){
 			}
 		}];
 
-		var historyPlusAdded = [
+		var addedHistory = [
 		{
 			eventName: 'GameCreated',
 			userName: 'Gvendurst',
@@ -195,7 +177,7 @@ describe('Controller: tictactoeController', function(){
 		}];
 
 		scope.events = history;
-		scope.setHistory(historyPlusAdded);
+		scope.setHistory(addedHistory);
 
 		expect(scope.events).toEqual(expected);
 	});
