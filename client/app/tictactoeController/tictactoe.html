@@ -16,12 +16,13 @@
 
 	<div ng-show='inGame'>
 		<table>
-		<tr ng-repeat='row in grid'>
-			<td>
-				<button ng-click='makeMove(0, $index)'>
-					{{row[0]}}
+		<tr ng-repeat='row in grid track by $index' ng-init='x=$index'>
+			<td ng-repeat='cell in row track by $index' ng-init='y=$index'>
+				<button ng-class="'cell' + y + x" ng-click='makeMove(y, x)'>
+					{{cell}}
 				</button>
 			</td>
+			<!--
 			<td>
 				<button ng-click='makeMove(1, $index)'>
 					{{row[1]}}
@@ -32,6 +33,7 @@
 					{{row[2]}}
 				</button>
 			</td>
+			-->
 		</tr>
 		</table>
 	</div>
