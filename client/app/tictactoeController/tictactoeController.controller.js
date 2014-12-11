@@ -13,6 +13,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 	$scope.events = [];
 
 	$scope.inGame = false;
+	$scope.gameFinished = false;
 
 	$scope.setHistory = function(newHistory){
 		$scope.events = newHistory;
@@ -42,10 +43,12 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 			else if($scope.events[i].eventName === 'GameWon'){
 				$scope.gameMessage = $scope.events[i].userName + ' won';
 				$scope.inGame = false;
+				$scope.gameFinished = true;
 			}
 			else if($scope.events[i].eventName === 'GameDraw'){
 				$scope.gameMessage = 'We have a tie';
 				$scope.inGame = false;
+				$scope.gameFinished = true;
 			}
 		}
 	};

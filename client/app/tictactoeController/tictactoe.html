@@ -11,10 +11,10 @@
 	</div>
 
 
-	<h2 id="gameMessage">{{gameMessage}}</h2>
 
 
-	<div id='tictactoeBoard' ng-show='inGame'>
+	<div id='tictactoeBoard' ng-show='inGame || gameFinished'>
+		<h2 id="gameMessage">{{gameMessage}}</h2>
 		<table>
 		<tr ng-repeat='row in grid track by $index' ng-init='x=$index'>
 			<td ng-repeat='cell in row track by $index' ng-init='y=$index'>
@@ -27,7 +27,7 @@
 	</div>
 
 
-	<h2>Events</h2>
+	<h2 id="EventsList">Events</h2>
 	<ul>
 	<li ng-repeat='event in events track by $index'>
 		<p>{{event.eventName}}</p>
