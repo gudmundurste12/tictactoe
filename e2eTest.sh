@@ -1,6 +1,8 @@
 #Update the chrome driver
 node node_modules/grunt-protractor-runner/node_modules/protractor/bin/webdriver-manager update
 
+npm install selenium -g
+
 echo Killing the old container
 docker kill gudmundurste12_tictactoe_dev
 echo Unassociating the name of the old container
