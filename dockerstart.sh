@@ -1,5 +1,5 @@
 echo Killing the old container
-docker kill name gudmundurste12_tictactoe
+docker kill gudmundurste12_tictactoe
 echo Unassociating the name of the old container
 docker rm gudmundurste12_tictactoe
 echo Pulling
