@@ -3,7 +3,7 @@
 var should = require('should');
 
 describe('Event database', function(){
-	it('Events should be stored in the database', function(){
+	it('Events should be stored in the database', function(done){
 		var Events = require('../eventSchema');
 
 		var mockGame = {

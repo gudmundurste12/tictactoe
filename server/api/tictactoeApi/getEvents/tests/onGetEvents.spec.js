@@ -16,11 +16,9 @@ describe("Controller: getting all events for a game: ", function(){
 		.type("json")
 		.send(payload)
 		.end(function(err, res){
-			console.log("Done");
 			if(err){
 				console.log("err: " + err);
 			}
-			console.log(JSON.stringify(res.body));
 			should(res.body).be.instanceof(Array);
 			done();
 		});
