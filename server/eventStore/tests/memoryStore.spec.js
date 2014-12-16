@@ -1,144 +1,60 @@
 var memoryStore = require('../memoryStore');
 var should = require('should');
-var q = require('q');
 
-describe('In memory database:', function(){
-	it('getHistory should return an empty array when the database is empty', function(done){
+
+describe('In memory store', function() {
+	beforeEach(function(){
+		memoryStore.store = {};
+	});
+
+	it('Should return empty array for unknown id', function() {
 		var store = memoryStore();
-
-		/*store.getHistory('Game1', function(err, values){
-			should(values).be.instanceof(Array);
-			should(values.length).be.exactly(0);
-			done();
-		});*/
-		store.getHistory('Game1').then(function(values){
-			should(values).be.instanceof(Array);
-			should(values.length).be.exactly(0);
-			should(1).be.exactly(2);
-			done();
+		store.getHistory('12345').then(function(err, loadedEvents){
+			should(loadedEvents.length).be.exactly(0);
+			should(loadedEvents).be.instanceof(Array);
+		}, function(err){
+			assert.fail('Load events failure!', err);
 		});
 	});
-/*
-	it('getHistory should return array of previously stored events', function(done){
-		var store = memoryStore();
 
-		store.storeEvents('Game1', [{
-			eventName: "GameCreated"
-		}]).then(function(){
-			store.getHistory('Game1').then(function(values){
-				should(values).eql({
-					eventName: "GameCreated"
-				});
-				should(1).be.exactly(2);
+	it('Should return events previously stored', function(done) {
+		this.timeout(5000);
+		var store = memoryStore();
+		store.storeEvents('1234', [{"testField":"1"}]).then(function(){
+			store.getHistory('1234').then(function(loadedEvents){
+				try {
+					should(loadedEvents[0].testField).be.exactly('1');
+				} 
+				catch (e) {
+					return done(e);
+				}
 				done();
+			}, function(err){
 			});
+		}, function(err){
 		});
 	});
 
-
-	it('When events have been stored, new events should be appended to the previously stored events', function(done){
+	it('should append stored events to events previously stored',function(done){
+		this.timeout(5000);
 		var store = memoryStore();
-
-		store.storeEvents('Game1', [{
-			eventName: "GameCreated"
-		}]).then(function(){
-			store.storeEvents('Game1', [{
-				eventName: "GameJoined"
-			}]).then(function(){
-				store.getHistory('Game1').then(function(values){
-					should(JSON.stringify(values)).be.exactly({
-						eventName: "GameCreated"
-					},
-					{
-						eventName: "GameJoined"
-					});
-					done();
+		store.storeEvents('12345', [{"testField":"3"}]).then(function(){
+			setTimeout(function(){
+				store.storeEvents('12345', [{"testField":"4"}]).then(function(){
+					setTimeout(function(){
+						store.getHistory('12345').then(function(loadedEvents){
+							try {
+								should(loadedEvents[0].testField).be.exactly('3');
+								should(loadedEvents[1].testField).be.exactly('4');
+							}
+							catch (e) {
+								return done(e);
+							}
+							done();
+						});
+					}, 0);
 				});
-			});
+			}, 0);
 		});
 	});
-*/
 });
-/*
-var should = require("should");
-
-describe("Memory store", function(){
-	it("Should return an empty array when nothing has been entered into it", function(){
-		//Arrange
-		var eventStore = require("../memoryStore")();
-		var expected = [];
-
-		//Act
-		var result = eventStore.getHistory("1");
-
-		//Assert
-		should(result).eql(expected);
-	});
-
-	it("Should return the same history that was entered into it", function(){
-		//Arrange
-		var eventStore = require("../memoryStore")();
-		var expected = [
-		{
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			gameId: "1",
-			timeStamp: "2014-12-02T11:29:29"
-		}];
-
-		//Act
-		eventStore.storeEvents("1",
-		[{
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			gameId: "1",
-			timeStamp: "2014-12-02T11:29:29"
-		}]);
-		var result = eventStore.getHistory("1");
-
-		//Assert
-		should(result).eql(expected);
-	});
-
-	it("Should return the correct history for the correct gameId", function(){
-		//Arrange
-		var eventStore = require("../memoryStore")();
-		var expected1 = [
-		{
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			gameId: "1",
-			timeStamp: "2014-12-02T11:29:29"
-		}];
-		var expected2 = [
-		{
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			gameId: "2",
-			timeStamp: "2014-12-02T11:29:29"
-		}];
-
-		//Act
-		eventStore.storeEvents("1",
-		[{
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			gameId: "1",
-			timeStamp: "2014-12-02T11:29:29"
-		}]);
-		var result1 = eventStore.getHistory("1");
-		eventStore.storeEvents("2",
-		[{
-			commandName: "CreateGame",
-			userName: "Gvendurst",
-			gameId: "2",
-			timeStamp: "2014-12-02T11:29:29"
-		}]);
-		var result2 = eventStore.getHistory("2");
-
-		//Assert
-		should(result1).eql(expected1);
-		should(result2).eql(expected2);
-	});
-});
-*/

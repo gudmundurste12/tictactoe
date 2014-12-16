@@ -135,7 +135,8 @@ module.exports = function (grunt) {
         },
         src: [
           'server/**/*.js',
-          '!server/**/*.spec.js'
+          '!server/**/*.spec.js',
+          '!server/**/*.dbspec.js'
         ]
       },
       serverTest: {

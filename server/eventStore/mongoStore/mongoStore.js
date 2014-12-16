@@ -5,18 +5,13 @@ module.exports = function(){
 	return {
 		getHistory: function(gameId){
 			var deferred = q.defer();
-			console.log("Searching");
 			Store.findOne({
 				gameId: gameId
 			}, function(err, res){
-				console.log("Something found");
 				if(err){
-					console.log("And rejected");
 					deferred.reject(err);
 				}
 				else{
-					console.log("And accepted");
-					console.log("res: " + JSON.stringify(res));
 					if(!res){
 						deferred.resolve([]);
 					}
@@ -39,13 +34,11 @@ module.exports = function(){
 						if(err) {
 							deferred.reject(err);
 						}
-						console.log("Created stream", thing);
 						deferred.resolve(thing);
 					});
 				}
 				else {
 					stream.events = stream.events.concat(events);
-					console.log("stream.events: ", stream.events);
 					stream.save(function(err){
 						if(err) {
 							deferred.reject(err);

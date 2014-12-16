@@ -19,6 +19,7 @@ describe("Controller: getting all events for a game: ", function(){
 			if(err){
 				console.log("err: " + err);
 			}
+
 			should(res.body).be.instanceof(Array);
 			done();
 		});
