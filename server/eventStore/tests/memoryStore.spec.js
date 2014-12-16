@@ -13,7 +13,7 @@ describe('In memory store', function() {
 			should(loadedEvents.length).be.exactly(0);
 			should(loadedEvents).be.instanceof(Array);
 		}, function(err){
-			assert.fail('Load events failure!', err);
+			should.assert.fail('Load events failure!', err);
 		});
 	});
 
