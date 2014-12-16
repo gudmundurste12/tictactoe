@@ -15,7 +15,9 @@ exports.handleCommand = function(req, res){
 	var boundedContext = tictactoeBoundedContext(eventStore, tictactoeCommandHandler);
 	var returnValue = boundedContext.handleCommand(req.body);
 	
-	res.json(returnValue);
+	returnValue.then(function(value){
+		res.json(value);
+	});
 };
 
 exports.getEvents = function(req, res){

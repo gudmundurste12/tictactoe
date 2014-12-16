@@ -19,7 +19,6 @@ describe("Controller: joining game", function(){
 		.type("json")
 		.send(command)
 		.end(function(err, res){
-			console.log("Done");
 			if(err){
 				console.log("err: " + err);
 			}

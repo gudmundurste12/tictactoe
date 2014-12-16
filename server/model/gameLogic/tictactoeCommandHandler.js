@@ -3,7 +3,7 @@ var _ = require("lodash");
 //TODO: Comment the code, and soon
 module.exports = function(history){
 	//TODO: Add a function that checks if history contains certain events. Use instead of f.ex. history.length === 0
-
+	
 	var tictactoeState = require('./tictactoeState');
 
 	var gameState = tictactoeState(history);
@@ -36,7 +36,6 @@ module.exports = function(history){
 	};
 
 	commandHandler.handleCommand = function(theCommand){
-		
 		var handler = {
 			"CreateGame": function(theCommand){
 				var resultEvents;
@@ -112,7 +111,6 @@ module.exports = function(history){
 				}
 			},
 
-			//TODO: Should this check for a legal move and game won?
 			"MakeMove": function(theCommand){
 				var resultEvents;
 				if(!commandHandler.containsEvent("GameCreated")){

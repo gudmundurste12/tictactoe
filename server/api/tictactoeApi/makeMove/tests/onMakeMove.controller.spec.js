@@ -23,7 +23,6 @@ describe("Controller: Making move", function(){
 		.type("json")
 		.send(command)
 		.end(function(err, res){
-			console.log("Done");
 			if(err){
 				console.log("err: " + err);
 			}
