@@ -38,6 +38,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 			if ($scope.events[i].eventName === 'GameCreated' ||
 				$scope.events[i].eventName === 'GameJoined') {
 				
+				$scope.gameMessage = '';
 				$scope.inGame = true;
 			}
 			else if($scope.events[i].eventName === 'GameWon'){
@@ -49,6 +50,9 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 				$scope.gameMessage = 'We have a tie';
 				$scope.inGame = false;
 				$scope.gameFinished = true;
+			}
+			else if($scope.events[i].eventName !== 'BadCommand'){
+				$scope.gameMessage = '';
 			}
 		}
 	};
