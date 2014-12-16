@@ -24,10 +24,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			},
+			cell: [1,1],
 			token: "x"
 		},
 		{
@@ -35,10 +32,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			},
+			cell: [0,0],
 			token: "o"
 		},
 		{
@@ -46,10 +40,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 2
-			},
+			cell: [0,2],
 			token: "x"
 		},
 		{
@@ -57,10 +48,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 0
-			},
+			cell: [2,0],
 			token: "o"
 		},
 		{
@@ -68,10 +56,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 0
-			},
+			cell: [1,0],
 			token: "x"
 		},
 		{
@@ -79,10 +64,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 2
-			},
+			cell: [1,2],
 			token: "o"
 		},
 		{
@@ -90,10 +72,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 2
-			},
+			cell: [2,2],
 			token: "x"
 		},
 		{
@@ -101,10 +80,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 1
-			},
+			cell: [0,1],
 			token: "o"
 		}];
 		
@@ -113,10 +89,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 1
-			}
+			cell: [2,1]
 		};
 
 		var then = [
@@ -125,10 +98,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 1
-			},
+			cell: [2,1],
 			token: "x"
 		},
 		{
@@ -165,10 +135,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			},
+			cell: [0,0],
 			token: "x"
 		},
 		{
@@ -176,10 +143,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 0
-			},
+			cell: [1,0],
 			token: "o"
 		},
 		{
@@ -187,10 +151,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 1
-			},
+			cell: [0,1],
 			token: "x"
 		},
 		{
@@ -198,10 +159,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			},
+			cell: [1,1],
 			token: "o"
 		}];
 
@@ -210,10 +168,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 2
-			}
+			cell: [0,2]
 		};
 		
 		var then = 	[
@@ -222,10 +177,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 2
-			},
+			cell: [0,2],
 			token: "x"
 		},
 		{
@@ -258,10 +210,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			},
+			cell: [0,0],
 			token: "x"
 		},
 		{
@@ -269,10 +218,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 0
-			},
+			cell: [1,0],
 			token: "o"
 		},
 		{
@@ -280,10 +226,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 1
-			},
+			cell: [0,1],
 			token: "x"
 		},
 		{
@@ -291,10 +234,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			},
+			cell: [1,1],
 			token: "o"
 		},
 		{
@@ -302,10 +242,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 2
-			},
+			cell: [0,2],
 			token: "x"
 		},
 		{
@@ -320,10 +257,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 2
-			}
+			cell: [1,2]
 		};
 
 		then = [{
@@ -359,10 +293,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			},
+			cell: [0,0],
 			token: "x"
 		},
 		{
@@ -370,10 +301,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 0
-			},
+			cell: [1,0],
 			token: "o"
 		},
 		{
@@ -381,10 +309,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 1
-			},
+			cell: [0,1],
 			token: "x"
 		},
 		{
@@ -392,10 +317,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst2",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			},
+			cell: [1,1],
 			token: "o"
 		},
 		{
@@ -403,10 +325,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 2
-			},
+			cell: [0,2],
 			token: "x"
 		},
 		{
@@ -429,10 +348,7 @@ describe("tictactoeCommandHandler on Win or Draw:", function(){
 			userName: "Gvendurst",
 			gameId:"1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 2
-			}
+			cell: [2,2]
 		};
 
 		then = [{

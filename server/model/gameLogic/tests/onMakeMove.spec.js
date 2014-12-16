@@ -103,10 +103,7 @@ describe("Make move:", function(){
 			commandName: "MakeMove",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29",
-			cell:{
-				x: 1,
-				y: 1
-			}
+			cell:[1,1]
 		};
 		
 		var then = [
@@ -116,10 +113,7 @@ describe("Make move:", function(){
 				commandName: "MakeMove",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29",
-				cell:{
-					x: 1,
-					y: 1
-				}
+				cell:[1,1]
 			},
 			history: [
 			{
@@ -167,10 +161,7 @@ describe("Make move:", function(){
 			commandName: "MakeMove",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:29:29",
-			cell:{
-				x: 1,
-				y: 1
-			}
+			cell:[1,1]
 		};
 		
 		var then = [
@@ -180,10 +171,7 @@ describe("Make move:", function(){
 				commandName: "MakeMove",
 				userName: "Gvendurst",
 				timeStamp: "2014-12-02T11:29:29",
-				cell:{
-					x: 1,
-					y: 1
-				}
+				cell:[1,1]
 			},
 			history: [
 			{
@@ -289,10 +277,7 @@ describe("Make move:", function(){
 			userName: "Gvendurst2",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29",
-			cell:{
-				x: 1,
-				y: 1
-			}
+			cell:[1,1]
 		};
 		
 		var then = [
@@ -303,10 +288,7 @@ describe("Make move:", function(){
 				userName: "Gvendurst2",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29",
-				cell:{
-					x: 1,
-					y: 1
-				}
+				cell:[1,1]
 			},
 			history: [
 			{
@@ -355,10 +337,7 @@ describe("Make move:", function(){
 			userName: "Gvendurst2",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29",
-			cell:{
-				x: 1,
-				y: 1
-			}
+			cell:[1,1]
 		};
 		
 		var then = [
@@ -369,10 +348,7 @@ describe("Make move:", function(){
 				userName: "Gvendurst2",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:29:29",
-				cell:{
-					x: 1,
-					y: 1
-				}
+				cell:[1,1]
 			},
 			history: [
 			{
@@ -420,10 +396,7 @@ describe("Make move:", function(){
 			userName: "Gvendurst",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		}];
 
 		var when = {
@@ -431,10 +404,7 @@ describe("Make move:", function(){
 			userName: "Gvendurst2",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		};
 
 		var then = [
@@ -446,10 +416,7 @@ describe("Make move:", function(){
 				userName: "Gvendurst2",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:39:29",
-				cell: {
-					x: 1,
-					y: 1
-				}
+				cell: [1,1]
 			},
 			history: [
 			{
@@ -469,10 +436,7 @@ describe("Make move:", function(){
 				userName: "Gvendurst",
 				gameId: "1",
 				timeStamp: "2014-12-02T11:39:29",
-				cell: {
-					x: 1,
-					y: 1
-				}
+				cell: [1,1]
 			}],
 			gameId: "1",
 			message: "Illegal move"
@@ -509,10 +473,7 @@ describe("Make move:", function(){
 			userName: "Gvendurst",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		};
 
 		var then = [
@@ -521,10 +482,7 @@ describe("Make move:", function(){
 			userName: "Gvendurst",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 1
-			},
+			cell: [1,1],
 			token: "x"
 		}];
 

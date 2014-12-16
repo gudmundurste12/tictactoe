@@ -21,10 +21,7 @@ describe("tictactoeState on MakeMove", function(){
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			}
+			cell: [0,0]
 		}];
 		
 		var gridAfter = [
@@ -65,28 +62,19 @@ describe("tictactoeState on MakeMove", function(){
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			}
+			cell: [0,0]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 1,
-				y: 2
-			}
+			cell: [1,2]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 2,
-				y: 1
-			}
+			cell: [2,1]
 		}];
 		
 		var gridAfter = [
@@ -126,19 +114,13 @@ describe("tictactoeState on MakeMove", function(){
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			}
+			cell: [0,0]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 0,
-				y: 0
-			}
+			cell: [0,0]
 		}];
 		
 		var gridAfter = [
@@ -177,55 +159,37 @@ describe("tictactoeState on MakeMove", function(){
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: -1,
-				y: -1
-			}
+			cell: [-1,-1]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: -1,
-				y: 0
-			}
+			cell: [-1,0]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 3,
-				y: 3
-			}
+			cell: [3,3]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: -1,
-				y: 3
-			}
+			cell: [-1,3]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 3,
-				y: -1
-			}
+			cell: [3,-1]
 		},
 		{
 			eventName: "MoveMade",
 			userName: "Gvendurst2",
 			timeStamp: "2014-12-02T11:39:29",
-			cell: {
-				x: 3,
-				y: 0
-			}
+			cell: [3,0]
 		}];
 		
 		var gridAfter = [
