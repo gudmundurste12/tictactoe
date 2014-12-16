@@ -8,6 +8,9 @@ bower install
 echo Updating path
 export PATH=$PATH:/usr/local/bin
 
+echo Starting mongodb
+service mongodb start
+
 echo Building app
 grunt
 
