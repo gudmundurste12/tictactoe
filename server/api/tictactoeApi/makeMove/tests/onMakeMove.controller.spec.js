@@ -10,10 +10,7 @@ describe("Controller: Making move", function(){
 			userName: "Gvendurst1",
 			gameId: "1",
 			timeStamp: "2014-12-02T11:29:29",
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		};
 
 		var req = request(app);

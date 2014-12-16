@@ -54,7 +54,7 @@ module.exports = function(history){
 	};
 
 	tictactoeState.insideGrid = function(cell){
-		return cell.x < 3 && cell.x >=  0 && cell.y < 3 && cell.y >=  0;
+		return cell[0] < 3 && cell[0] >=  0 && cell[1] < 3 && cell[1] >=  0;
 	};
 
 	tictactoeState.getGrid = function(){
@@ -92,7 +92,7 @@ module.exports = function(history){
 
 	tictactoeState.canMakeMove = function(userName, cell){
 		if(	tictactoeState.status.status === "Unresolved" &&
-			tictactoeState.grid[cell.y][cell.x] === "" &&
+			tictactoeState.grid[cell[1]][cell[0]] === "" &&
 			tictactoeState.insideGrid(cell) &&
 			tictactoeState.currentPlayer === userName){
 			return true;
@@ -108,8 +108,8 @@ module.exports = function(history){
 
 	tictactoeState.updateStatus = function(theEvent){
 		var win = false;
-		win = win || tictactoeState.winOnLineVertical(theEvent.cell.x);
-		win = win || tictactoeState.winOnLineHorizontal(theEvent.cell.y);
+		win = win || tictactoeState.winOnLineVertical(theEvent.cell[0]);
+		win = win || tictactoeState.winOnLineHorizontal(theEvent.cell[1]);
 		win = win || tictactoeState.winOnLineDiagonalDown();
 		win = win || tictactoeState.winOnLineDiagonalUp();
 
@@ -151,15 +151,15 @@ module.exports = function(history){
 			}
 			else if(theEvent.eventName === "MoveMade"){
 				if(	tictactoeState.insideGrid(theEvent.cell) &&
-					tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] === "" &&
+					tictactoeState.grid[theEvent.cell[1]][theEvent.cell[0]] === "" &&
 					tictactoeState.status.status === "Unresolved"){
 					if(theEvent.userName === tictactoeState.players[0]){
-						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "x";
+						tictactoeState.grid[theEvent.cell[1]][theEvent.cell[0]] = "x";
 						tictactoeState.updateStatus(theEvent);
 						tictactoeState.currentPlayer = tictactoeState.players[1];
 					}
 					else if(theEvent.userName === tictactoeState.players[1]){
-						tictactoeState.grid[theEvent.cell.y][theEvent.cell.x] = "o";
+						tictactoeState.grid[theEvent.cell[1]][theEvent.cell[0]] = "o";
 						tictactoeState.updateStatus(theEvent);
 						tictactoeState.currentPlayer = tictactoeState.players[0];
 					}
