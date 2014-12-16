@@ -2,64 +2,61 @@ var mongoStore = require('../mongoStore');
 var should = require('should');
 var eventSchema = require('../eventSchema');
 
-describe('Mongo database:', function(){
+
+describe('Mongodb store', function() {
 	beforeEach(function(){
-		//Empty the database
 		eventSchema.remove().exec();
 	});
 
-	/*
-	it('getHistory should return an empty array when the database is empty', function(done){
-		this.timeout(5000);
-
+	it('Should return empty array for unknown id', function() {
 		var store = mongoStore();
-
-		store.getHistory('Game1', function(err, values){
-			should(values).be.instanceof(Array);
-			should(values.length).be.exactly(0);
-			done();
+		store.getHistory('12345').then(function(err, loadedEvents){
+			should(loadedEvents.length).be.exactly(0);
+			should(loadedEvents).be.instanceof(Array);
+			should(loadedEvents).eql(['A']);
+		}, function(err){
+			assert.fail('Load events failure!', err);
 		});
 	});
 
-	it('getHistory should return array of previously stored events', function(done){
+	it('Should return events previously stored', function(done) {
 		this.timeout(5000);
 		var store = mongoStore();
-
-		store.storeEvents('Game1', [{
-			eventName: "GameCreated"
-		}]).then(function(){
-			store.loadEvents('Game1').then(function(values){
-				should(values).eql({
-					eventName: "GameCreated"
-				});
-				should(1).be.exactly(2);
+		store.storeEvents('1234', [{"testField":"1"}]).then(function(){
+			store.getHistory('1234').then(function(loadedEvents){
+				try {
+					should(loadedEvents[0].testField).be.exactly('1');
+				} 
+				catch (e) {
+					return done(e);
+				}
 				done();
+			}, function(err){
 			});
+		}, function(err){
 		});
 	});
 
-
-	it('When events have been stored, new events should be appended to the previously stored events', function(done){
+	it('should append stored events to events previously stored',function(done){
 		this.timeout(5000);
 		var store = mongoStore();
-
-		store.storeEvents('Game1', [{
-			eventName: "GameCreated"
-		}]).then(function(){
-			store.storeEvents('Game1', [{
-				eventName: "GameJoined"
-			}]).then(function(){
-				store.loadEvents('Game1').then(function(values){
-					should(JSON.stringify(values)).be.exactly({
-						eventName: "GameCreated"
-					},
-					{
-						eventName: "GameJoined"
-					});
-					done();
+		store.storeEvents('12345', [{"testField":"3"}]).then(function(){
+			setTimeout(function(){
+				store.storeEvents('12345', [{"testField":"4"}]).then(function(){
+					setTimeout(function(){
+						store.getHistory('12345').then(function(loadedEvents){
+							try {
+								should(loadedEvents[0].testField).be.exactly('3');
+								should(loadedEvents[1].testField).be.exactly('4');
+							}
+							catch (e) {
+								return done(e);
+							}
+							done();
+						});
+					}, 0);
 				});
-			});
+			}, 0);
 		});
 	});
-	*/
 });

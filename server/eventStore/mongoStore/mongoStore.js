@@ -5,14 +5,24 @@ module.exports = function(){
 	return {
 		getHistory: function(gameId){
 			var deferred = q.defer();
-			Store.find({
+			console.log("Searching");
+			Store.findOne({
 				gameId: gameId
 			}, function(err, res){
+				console.log("Something found");
 				if(err){
+					console.log("And rejected");
 					deferred.reject(err);
 				}
 				else{
-					deferred.resolve(res);
+					console.log("And accepted");
+					console.log("res: " + JSON.stringify(res));
+					if(!res){
+						deferred.resolve([]);
+					}
+					else{
+						deferred.resolve(res.events);
+					}
 				}
 			});
 
@@ -20,41 +30,31 @@ module.exports = function(){
 		},
 		storeEvents: function(gameId, events){
 			var deferred = q.defer();
-
-			Store.find({
-				gameId: gameId
-			}, function(err, res){
-				if(err){
+			Store.findOne({gameId:gameId}, function(err, stream) {
+				if(err) {
 					deferred.reject(err);
 				}
-				else if(!res.events){
-					Store.create({
-						gameId: gameId,
-						events: events
-					},
-					function(err, res2){
-						if(err){
+				else if(!stream){
+					Store.create({gameId:gameId, events: events}, function(err, thing) {
+						if(err) {
 							deferred.reject(err);
 						}
-						else{
-							deferred.resolve(res2);
-						}
+						console.log("Created stream", thing);
+						deferred.resolve(thing);
 					});
 				}
-				else{
-					res.events = res.events.concat(events);
-
-					res.save(function(err){
-						if(err){
+				else {
+					stream.events = stream.events.concat(events);
+					console.log("stream.events: ", stream.events);
+					stream.save(function(err){
+						if(err) {
 							deferred.reject(err);
 						}
-						else{
-							deferred.resolve(res.events);
-						}
+						deferred.resolve(stream.events);
 					});
 				}
 			});
-
+			
 			return deferred.promise;
 		}
 	}
