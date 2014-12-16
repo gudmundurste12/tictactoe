@@ -72,10 +72,7 @@ describe('Controller: tictactoeController', function(){
 			commandName: 'MakeMove',
 			userName: 'Gvendurst',
 			timeStamp: '2014-12-02T11:29:29',
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		}).respond(
 		[
 			{value: 'TestValue'}
@@ -107,10 +104,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		}];
 
 		scope.events = [];
@@ -147,10 +141,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		}];
 
 		var addedHistory = [
@@ -171,10 +162,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 1,
-				y: 1
-			}
+			cell: [1,1]
 		}];
 
 		scope.events = history;
@@ -203,10 +191,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 1,
-				y: 1
-			},
+			cell: [1,1],
 			token: 'x'
 		},
 		{
@@ -214,10 +199,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst2',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 0,
-				y: 0
-			},
+			cell: [0,0],
 			token: 'o'
 		},
 		{
@@ -225,10 +207,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 2,
-				y: 2
-			},
+			cell: [2,2],
 			token: 'x'
 		},
 		{
@@ -236,10 +215,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst2',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 0,
-				y: 2
-			},
+			cell: [0,2],
 			token: 'o'
 		},
 		{
@@ -247,10 +223,7 @@ describe('Controller: tictactoeController', function(){
 			userName: 'Gvendurst',
 			gameId: '1',
 			timeStamp: '2014-12-02T11:39:29',
-			cell: {
-				x: 2,
-				y: 0
-			},
+			cell: [2,0],
 			token: 'x'
 		}];
 
@@ -272,5 +245,58 @@ describe('Controller: tictactoeController', function(){
 		expect(scope.grid).toEqual(expected);
 		expect(scope.inGame).toEqual(true);
 		expect(scope.gameMessage).toEqual('');
+	});
+
+
+	it('The api should be called every second', function(){
+		httpBackend.expectPOST('/api/createGame/',
+		{
+			gameId: '1',
+			commandName: 'CreateGame',
+			userName: 'Gvendurst',
+			timeStamp: '2014-12-02T11:29:29'
+		}).respond(
+		[
+			{value: 'TestValue'}
+		]);
+
+		scope.gameId = '1';
+		scope.userName = 'Gvendurst';
+
+		scope.createGame();
+		httpBackend.flush();
+
+
+		httpBackend.expectPOST('/api/joinGame/',
+		{
+			gameId: '1',
+			commandName: 'JoinGame',
+			userName: 'Gvendurst2',
+			timeStamp: '2014-12-02T11:29:29'
+		}).respond(
+		[
+			{value: 'TestValue'}
+		]);
+
+		scope.gameId = '1';
+		scope.userName = 'Gvendurst2';
+
+		scope.joinGame();
+		httpBackend.flush();
+
+
+		httpBackend.expectPOST('/api/getEvents/',
+		{
+			gameId: '1'
+		}).respond(
+		[
+			{value: 'TestValue'}
+		]);
+
+		scope.gameId = '1';
+		scope.userName = 'Gvendurst';
+
+		interval.flush(1001);
+		httpBackend.flush();
 	});
 });

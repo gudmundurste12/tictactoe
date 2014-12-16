@@ -28,7 +28,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 
 		for(var i = 0; i < $scope.events.length; i++){
 			if($scope.events[i].eventName === 'MoveMade'){
-				$scope.grid[$scope.events[i].cell.y][$scope.events[i].cell.x] = $scope.events[i].token;
+				$scope.grid[$scope.events[i].cell[1]][$scope.events[i].cell[0]] = $scope.events[i].token;
 			}
 		}
 	};
@@ -101,10 +101,7 @@ angular.module('tictactoeApp').controller('tictactoeController', function($scope
 			'commandName': 'MakeMove',
 			'userName': $scope.userName,
 			'timeStamp': '2014-12-02T11:29:29',
-			'cell': {
-				x: x,
-				y: y
-			}
+			'cell': [x,y]
 		};
 
 		var requestPromise = $http.post('/api/makeMove/',
