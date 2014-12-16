@@ -1,7 +1,7 @@
 var tictactoeBoundedContext = require("../../model/boundedContext/tictactoeBoundedContext");
 var tictactoeCommandHandler = require("../../model/gameLogic/tictactoeCommandHandler");
 var app = require("../../app");
-var eventStoreLocation = "../../eventStore/memoryStore";
+var eventStoreLocation = "../../eventStore/memoryStore/memoryStore";
 
 exports.handleCommand = function(req, res){
 	//TODO: Test if this really does any work.

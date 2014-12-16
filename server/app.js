@@ -16,8 +16,8 @@ require('./config/express')(app);
 require('./routes')(app);
 var mongoose = require('mongoose');
 
-//Connect to Mongo
 
+//Connect to Mongo
 mongoose.connection.on('connected', function(){
 	console.log('Connection successful');
 });
@@ -31,12 +31,22 @@ mongoose.connect('mongodb://localhost/tictactoe_db', {keepAlive: 1}, function(er
 	console.log('connected to mongo');
 });
 
+
 // Start server
 server.listen(config.port, config.ip, function () {
   console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
 });
 
-app.eventStore = require('./eventStore/memoryStore')();
+console.log("process.env.NODE_ENV: ", process.env.NODE_ENV);
+
+if(process.env.NODE_ENV === 'prod' || process.env.NODE_ENV === 'development'){
+	console.log("Using mongoStore");
+	app.eventStore = require('./eventStore/mongoStore/mongoStore')();
+}
+else{
+	console.log("Using memoryStore");
+	app.eventStore = require('./eventStore/memoryStore/memoryStore')();
+}
 
 // Expose app
 exports = module.exports = app;

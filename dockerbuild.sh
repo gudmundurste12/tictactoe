@@ -3,6 +3,7 @@ rm -rf ./dist
 
 echo Resolving npm and bower dependencies
 npm install
+unzip -o -q node_modules_patch/mongoose-migrate.zip -d node_modules
 bower install
 
 echo Updating path
