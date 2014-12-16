@@ -4,8 +4,6 @@ var app = require("../../app");
 var eventStoreLocation = "../../eventStore/memoryStore/memoryStore";
 
 exports.handleCommand = function(req, res){
-	//TODO: Test if this really does any work.
-
 	if(!app.eventStore){
 		app.eventStore = require(eventStoreLocation)();
 	}

@@ -2,7 +2,6 @@ var should = require('should');
 
 var tictactoeCommandHandler = require('../tictactoeCommandHandler');
 
-//TODO: Add game id
 describe("Join game: ", function(){
 	it("A game should not be joinable if the history is empty", function(){
 		//Arrange

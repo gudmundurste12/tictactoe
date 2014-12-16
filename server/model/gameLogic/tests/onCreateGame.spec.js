@@ -3,7 +3,6 @@ var should = require('should');
 var tictactoeCommandHandler = require('../tictactoeCommandHandler');
 var tictactoeState = require('../tictactoeState');
 
-//TODO: An existing game should not be able to be created again
 describe("Create game:", function(){
 	it("Given an empty history, handleCommand should only return the GameCreated event", function(){
 		//Arrange
